@@ -1,0 +1,17 @@
+{
+  "name": "animation-editor",
+  "version": "1.0.0",
+  "description": "piskel",
+  "main": "main.js",
+  "dependencies": {
+  
+  },
+  "devDependencies": {
+    
+  },
+  "scripts": {
+    
+  },
+  "author": "",
+  "license": "ISC"
+}
