@@ -12,6 +12,7 @@ export default class AppController {
     this.tools = document.querySelector('.tools');
     this.player = document.querySelector('.play-wrapper');
     this.framsControl = document.querySelector('.button-wrapper');
+    this.player = document.querySelector('.play-wrapper');
     this.transformControl = document.querySelector('.transform-tool');
     document.getElementById('get_color').addEventListener('change', e => this.view.changeColor(e));
 
@@ -46,12 +47,32 @@ export default class AppController {
     this.view.canvas.addEventListener('mouseup', (e) => {
       if (this.do === 'pen') this.view.up();
     });
+
+    this.player.addEventListener('click', (e) => {
+      this.done(e);
+      if (this.do === 'play') {
+        this.view.playFrams();
+        this.do = this.was;
+        document.querySelector('.play').disabled = true;
+      }
+      if (this.do === 'stop') {
+        document.querySelector('.play').disabled = false;
+        this.do = this.was;
+        this.view.stopPlay();
+      }
+      if (this.do === 'full') {
+        this.do = this.was;
+        this.view.fullScreen();
+      }
+    });
   }
+  
   done(e) {
     const elem = (e.target.classList.contains('material-icons') || e.target.nodeName === 'IMG') ? e.target.parentElement.className : e.target.className;
     this.was = (this.do !== 'add' || this.do !== 'save' || this.do !== 'play' || this.do !== 'stop' || this.do !== 'full' || this.do !== 'clone' || this.do !== 'turn') ? this.do : this.was;
     this.do = (this.dones.indexOf(elem) !== -1) ? elem : 'pen';
   }
+
 }
 
 const controller = new AppController();

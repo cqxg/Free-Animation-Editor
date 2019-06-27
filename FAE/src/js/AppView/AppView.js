@@ -14,6 +14,27 @@ export default class AppView {
     this.model = new AppModel();
   }
 
+  Grid() {
+    const contx = this.gridCanvas.getContext('2d');
+    contx.strokeStyle = '#808080';
+    let buf = 0;
+    for (let i = 0; i <= this.grid.cellsNumberX; i += 1) {
+      contx.beginPath();
+      contx.moveTo(buf, 0);
+      contx.lineTo(buf, this.canvas.height);
+      contx.stroke();
+      buf += this.grid.lineX;
+    }
+    buf = 0;
+    for (let j = 0; j <= this.grid.cellsNumberY; j += 1) {
+      contx.beginPath();
+      contx.moveTo(0, buf);
+      contx.lineTo(this.canvas.width, buf);
+      contx.stroke();
+      buf += this.grid.lineY;
+    }
+  }
+
   // pen paint
   down(e) {
     this.paint = true;
@@ -159,4 +180,46 @@ export default class AppView {
     });
   }
   //----------------------
+
+  // play frams
+  changeSpeed(e) {
+    this.speed = 1000 / e.target.value;
+  }
+
+  drawingMin(i) {
+    let url = '';
+    for (let j = 0; j < this.model.frames[i].data.length; j += 1) {
+      url += `url(${this.model.frames[i].data[j]}),`;
+    }
+    url = url.slice(0, url.length - 2);
+    this.prevCanvas.style.backgroundImage = `${url}`;
+    this.prevCanvas.style.backgroundColor = this.model.frames[i].background;
+  }
+
+  playFrams() {
+    let i = 0;
+    if (this.model.framesTwo.length !== 0) {
+      this.myAnimation = setInterval(() => {
+        this.drawingMin(i);
+        if (i >= this.model.framesTwo.length - 1) i = 0;
+        else i += 1;
+      }, this.speed);
+    }
+  }
+
+  stopPlay() {
+    clearInterval(this.myAnimation);
+  }
+
+  fullScreen() {
+    if (!document.fullscreenElement) {
+      this.prevCanvas.requestFullscreen()
+        .catch((err) => {
+          alert(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+        });
+    } else {
+      document.exitFullscreen();
+    }
+  }
+  //------------------
 }
