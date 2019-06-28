@@ -31,6 +31,8 @@ export default class AppController {
     this.view.canvas.addEventListener('click', (e) => {
       if (this.do === 'bucket-full') this.view.bucketFull(hexToRgb(this.view.color));
       if (this.do === 'bucket') this.view.bucket(e, hexToRgb(this.view.color));
+      if (this.do === 'eraser') this.view.down(e);
+      if (this.do === 'line') this.view.upLine(e);
       if (this.do === 'pipette') {
         document.getElementById('get_color').value = rgb2hex(this.view.selectColor(e));
       }
@@ -38,6 +40,8 @@ export default class AppController {
 
     this.view.canvas.addEventListener('mousedown', (e) => {
       if (this.do === 'pen') this.view.down(e);
+      if (this.do === 'eraser') this.view.move(e, 'eraser');
+      if (this.do === 'eraser') this.view.up();
     });
 
     this.view.canvas.addEventListener('mousemove', (e) => {

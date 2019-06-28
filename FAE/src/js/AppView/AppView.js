@@ -174,6 +174,14 @@ upCircle(status = 'none') {
 }
 //-------------
 
+up() {
+  this.paint = false;
+  this.context.globalCompositeOperation = 'source-over';
+}
+
+
+  // paint line
+
 clear() {
   this.backroundcolor = 'white';
   this.backgroundColor.style.backgroundColor = this.backroundcolor;
