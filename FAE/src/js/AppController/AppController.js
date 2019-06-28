@@ -42,6 +42,7 @@ export default class AppController {
       if (this.do === 'pen') this.view.down(e);
       if (this.do === 'eraser') this.view.move(e, 'eraser');
       if (this.do === 'eraser') this.view.up();
+      if (this.do === 'line') this.view.upLine(e);
     });
 
     this.view.canvas.addEventListener('mousemove', (e) => {
