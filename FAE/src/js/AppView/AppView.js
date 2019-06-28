@@ -102,7 +102,35 @@ export default class AppView {
     }
     this.context.putImageData(imageData, 0, 0);
   }
-  //---------------------------
+//---------------------------
+
+// rectangle
+rectangle(status) {
+  this.context.fillStyle = this.color;
+  this.context.lineWidth = this.width;
+  if (status === 'stroke') this.context.strokeRect(this.rect.startX, this.rect.startY, this.rect.w, this.rect.h);
+  else this.context.fillRect(this.rect.startX, this.rect.startY, this.rect.w, this.rect.h);
+}
+
+downRectangle(e) {
+  this.rect.startX = e.pageX - this.canvas_cont.offsetLeft;
+  this.rect.startY = e.pageY - this.canvas_cont.offsetTop;
+  this.paint = true;
+}
+
+moveRectangle(e) {
+  if (this.paint) {
+    this.rect.w = (e.pageX - this.canvas_cont.offsetLeft) - this.rect.startX;
+    this.rect.h = (e.pageY - this.canvas_cont.offsetTop) - this.rect.startY;
+  }
+}
+
+upRectangle(status = 'none') {
+  this.rectangle(status);
+  this.paint = false;
+}
+//--------------------
+
 // paint circle
 paintCircle(status) {
   const radiusX = (this.x2 - this.x1) * 0.5;
@@ -151,7 +179,6 @@ clear() {
   this.backgroundColor.style.backgroundColor = this.backroundcolor;
   this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
 }
-
   // frams
   frameDraw(x = 1000) {
     const imageData = this.context.getImageData(0, 0, this.canvas.width, this.canvas.height);
