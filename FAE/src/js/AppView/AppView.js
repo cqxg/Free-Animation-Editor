@@ -103,6 +103,54 @@ export default class AppView {
     this.context.putImageData(imageData, 0, 0);
   }
   //---------------------------
+// paint circle
+paintCircle(status) {
+  const radiusX = (this.x2 - this.x1) * 0.5;
+  const radiusY = (this.y2 - this.y1) * 0.5;
+  const centerX = this.x1 + radiusX;
+  const centerY = this.y1 + radiusY;
+  const step = 0.01;
+  this.context.beginPath();
+  this.context.lineWidth = this.width;
+  this.context.moveTo(centerX + radiusX * Math.cos(0), centerY + radiusY * Math.sin(0));
+  for (let a = step; a < Math.PI * 2 - step; a += step) {
+    this.context.lineTo(centerX + radiusX * Math.cos(a), centerY + radiusY * Math.sin(a));
+  }
+  this.context.closePath();
+  if (status === 'stroke') {
+    this.context.strokeStyle = this.color;
+    this.context.stroke();
+  } else {
+    this.context.fillStyle = this.color;
+    this.context.fill();
+  }
+}
+
+downCircle(e) {
+  const rect = this.canvas.getBoundingClientRect();
+  this.x1 = e.clientX - rect.left;
+  this.y1 = e.clientY - rect.top;
+  this.paint = true;
+}
+
+moveCircle(e) {
+  if (!this.paint) return;
+  const rect = this.canvas.getBoundingClientRect();
+  this.x2 = e.clientX - rect.left;
+  this.y2 = e.clientY - rect.top;
+}
+
+upCircle(status = 'none') {
+  this.paintCircle(status);
+  this.paint = false;
+}
+//-------------
+
+clear() {
+  this.backroundcolor = 'white';
+  this.backgroundColor.style.backgroundColor = this.backroundcolor;
+  this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+}
 
   // frams
   frameDraw(x = 1000) {
