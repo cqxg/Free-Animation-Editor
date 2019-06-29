@@ -163,6 +163,21 @@ upRectangle(status = 'none') {
     this.saveFrame();
   }
 
+  mirror() {
+    this.clear();
+    const img = new Image();
+    img.src = this.model.frames[this.active_num].data[this.active_layer];
+    this.context.drawImage(img, img.width, 0);
+    this.context.save();
+    this.context.translate(img.width, 0);
+    this.context.scale(-1, 1);
+    this.context.drawImage(img, 0, 0);
+    this.context.restore();
+    this.context.setTransform(1, 0, 0, 1, 0, 0);
+    this.context.resetTransform();
+    this.saveFrame();
+  }
+
 
 // paint circle
 paintCircle(status) {
