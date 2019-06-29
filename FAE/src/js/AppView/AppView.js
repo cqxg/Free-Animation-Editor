@@ -178,6 +178,10 @@ upRectangle(status = 'none') {
     this.saveFrame();
   }
 
+  clone() {
+    this.model.cloneFram(this.active_num);
+    this.refactior();
+  }
 
 // paint circle
 paintCircle(status) {
