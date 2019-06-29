@@ -216,6 +216,12 @@ moveCanvas(e) {
   }
 }
 
+// show coordinats
+showCoordinates(e) {
+  document.querySelector('.coordinates').innerHTML = '';
+  document.querySelector('.coordinates').innerHTML = `<p class="coordinates_data">${(e.pageX - this.canvas_cont.offsetLeft) / 64}/${(e.pageX - this.canvas_cont.offsetLeft) / 64}</p>`;
+}
+
 upCanvas() {
   this.paint = false;
   this.saveFrame();

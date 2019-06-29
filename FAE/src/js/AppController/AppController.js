@@ -28,6 +28,13 @@ export default class AppController {
       }
     });
 
+    this.view.canvas.addEventListener('mousemove', (e) => {
+      this.view.showCoordinates(e);
+    });
+
+    this.view.canvas.addEventListener('mouseout', () => {
+      document.querySelector('.coordinates').innerHTML = '';
+    });
   
     this.view.canvas.addEventListener('click', (e) => {
       if (this.do === 'bucket-full') this.view.bucketFull(hexToRgb(this.view.color));
