@@ -78,6 +78,13 @@ export default class AppController {
         this.view.fullScreen();
       }
     });
+    this.transformControl.addEventListener('click', (e) => {
+      this.done(e);
+      if (this.do === 'turn') this.view.turn();
+      if (this.do === 'clone') this.view.clone();
+      if (this.do === 'mirror') this.view.mirror();
+      this.do = this.was;
+    });
   }
   
   done(e) {

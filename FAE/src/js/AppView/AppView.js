@@ -149,6 +149,21 @@ upRectangle(status = 'none') {
 }
 //--------------------
 
+  // transform
+  turn() {
+    this.clear();
+    const img = new Image();
+    img.src = this.model.frames[this.active_num].data[this.active_layer];
+    this.context.save();
+    this.context.translate(this.context.canvas.width / 2, this.context.canvas.height / 2);
+    this.context.rotate(Math.PI / 2);
+    this.context.drawImage(img, -(img.width / 2), -(img.height / 2));
+    this.context.restore();
+    this.context.resetTransform();
+    this.saveFrame();
+  }
+
+
 // paint circle
 paintCircle(status) {
   const radiusX = (this.x2 - this.x1) * 0.5;
