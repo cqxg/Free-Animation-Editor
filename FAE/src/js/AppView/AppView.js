@@ -1,7 +1,4 @@
 import AppModel from '../AppModel/AppModel';
-import GIF from '../gif.js-master/dist/gif';
-import download from './functionDownlode';
-import saveImage from './functionSaveImg';
 
 export default class AppView {
   constructor() {
@@ -313,6 +310,12 @@ export default class AppView {
       document.querySelector('.lyers-wrapper').innerHTML = '';
     }
   }
+
+  layerMoving(move = 'up') {
+    if (move === 'up') this.active_layer = this.model.changeLayer(this.active_num, this.active_layer, -1);
+    else this.active_layer = this.model.changeLayer(this.active_num, this.active_layer, 1);
+    this.goToTheLayer(this.active_layer);
+  }
   //-----------------------
 
   // color (change, select, bucket, fullbucket, transparency)
@@ -476,4 +479,5 @@ export default class AppView {
   }
 
   // saving
+
 }
