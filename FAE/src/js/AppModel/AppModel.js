@@ -4,6 +4,8 @@ export default class AppModel {
     this.framesTwo = [];
     this.framesWrapper = document.querySelector('.frames-wrapper');
     this.frameTemplate = document.querySelector('#frame-template');
+    this.layerWrapper = document.querySelector('.lyers-wrapper');
+    this.layerTemplate = document.getElementById('layer-template');
   }
 
   frameDraw(x = 1000, image, backgroundColor, data) {
@@ -30,6 +32,13 @@ export default class AppModel {
     this.frames.splice(num, 1);
   }
 
+  saveFrameLayer(num, numlay, imageData, background, dataURL) {
+    this.framesTwo[num].img[numlay] = imageData;
+    this.framesTwo[num].background = background;
+    this.frames[num].data[numlay] = dataURL;
+    this.frames[num].background = background;
+  }
+
   cloneFram(num) {
     const len = this.framesTwo.length;
     for (let i = 0; i < len; i += 1) {
@@ -40,5 +49,18 @@ export default class AppModel {
       this.framesTwo[i] = imageObj;
       this.frames[i] = dataObj;
     }
+  }
+
+  addLayerforFrams(num, imageData, background, dataURL) {
+    if (num !== null) {
+      this.framesTwo[num].img.push(imageData);
+      this.framesTwo[num].background = background;
+      this.frames[num].data.push(dataURL);
+      this.frames[num].background = background;
+    }
+  }
+
+  getNexNum(activ_fram = 0) {
+    return this.framesTwo[activ_fram].img.length - 1;
   }
 }

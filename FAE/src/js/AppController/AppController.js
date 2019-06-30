@@ -12,9 +12,18 @@ export default class AppController {
     this.tools = document.querySelector('.tools');
     this.player = document.querySelector('.play-wrapper');
     this.framsControl = document.querySelector('.button-wrapper');
-    this.player = document.querySelector('.play-wrapper');
     this.transformControl = document.querySelector('.transform-tool');
     document.getElementById('get_color').addEventListener('change', e => this.view.changeColor(e));
+    document.getElementById('speed').addEventListener('change', e => this.view.changeSpeed(e));
+
+    document.querySelector('.addLayer').addEventListener('click', () => this.view.addNewLayer());
+    document.querySelector('.layer-delete').addEventListener('click', () => this.view.deleteNewLayer());
+    document.querySelector('.layerUp').addEventListener('click', () => this.view.layerMoving('up'));
+    document.querySelector('.layerDown').addEventListener('click', () => this.view.layerMoving('down'));
+
+    //document.querySelector('.saveImg').addEventListener('click', () => this.view.saveCanvasAsImageFile());
+    //document.querySelector('.saveAnimation').addEventListener('click', () => this.view.saveAnimation());
+
     document.addEventListener('keypress', event => this.setTool(event));
 
     this.tools.addEventListener('click', (e) => {
@@ -28,37 +37,16 @@ export default class AppController {
       }
     });
 
-    this.view.canvas.addEventListener('mousemove', (e) => {
-      this.view.showCoordinates(e);
-    });
-
-    this.view.canvas.addEventListener('mouseout', () => {
-      document.querySelector('.coordinates').innerHTML = '';
-    });
-  
-    this.view.canvas.addEventListener('click', (e) => {
-      if (this.do === 'bucket-full') this.view.bucketFull(hexToRgb(this.view.color));
-      if (this.do === 'bucket') this.view.bucket(e, hexToRgb(this.view.color));
-      if (this.do === 'eraser') this.view.down(e);
-      if (this.do === 'line') this.view.upLine(e);
-      if (this.do === 'pipette') {
-        document.getElementById('get_color').value = rgb2hex(this.view.selectColor(e));
+    this.framsControl.addEventListener('click', (e) => {
+      this.done(e);
+      if (this.do === 'add') {
+        this.do = this.was;
+        this.view.frameDraw();
       }
-    });
-
-    this.view.canvas.addEventListener('mousedown', (e) => {
-      if (this.do === 'pen') this.view.down(e);
-      if (this.do === 'eraser') this.view.move(e, 'eraser');
-      if (this.do === 'eraser') this.view.up();
-      if (this.do === 'line') this.view.upLine(e);
-    });
-
-    this.view.canvas.addEventListener('mousemove', (e) => {
-      if (this.do === 'pen') this.view.move(e);
-    });
-
-    this.view.canvas.addEventListener('mouseup', (e) => {
-      if (this.do === 'pen') this.view.up();
+      if (this.do === 'save') {
+        this.do = this.was;
+        this.view.saveFrame();
+      }
     });
 
     this.player.addEventListener('click', (e) => {
@@ -78,6 +66,7 @@ export default class AppController {
         this.view.fullScreen();
       }
     });
+
     this.transformControl.addEventListener('click', (e) => {
       this.done(e);
       if (this.do === 'turn') this.view.turn();
@@ -85,8 +74,68 @@ export default class AppController {
       if (this.do === 'mirror') this.view.mirror();
       this.do = this.was;
     });
+
+    this.view.canvas.addEventListener('click', (e) => {
+      if (this.do === 'bucket-full') this.view.bucketFull(hexToRgb(this.view.color));
+      if (this.do === 'bucket') this.view.bucket(e, hexToRgb(this.view.color));
+      if (this.do === 'pipette') {
+        document.getElementById('get_color').value = rgb2hex(this.view.selectColor(e));
+      }
+      if (this.do === 'lighten') this.view.transparency(e);
+      if (this.do === 'blackout') this.view.transparency(e, 'blackout');
+    });
+
+    this.view.canvas.addEventListener('mousemove', (e) => {
+      this.view.showCoordinates(e);
+    });
+
+    this.view.canvas.addEventListener('mouseout', () => {
+      document.querySelector('.coordinates').innerHTML = '';
+    });
+
+    this.view.canvas.addEventListener('mousedown', (e) => {
+      if (this.do === 'pen') this.view.down(e);
+      if (this.do === 'line') this.view.down(e);
+      if (this.do === 'eraser') this.view.down(e);
+      if (this.do === 'circle' || this.do === 'stroke-circle') this.view.downCircle(e);
+      if (this.do === 'rectngle' || this.do === 'stroke-rectngle') this.view.downRectangle(e);
+      if (this.do === 'move') this.view.downCanvas(e);
+    });
+
+    this.view.canvas.addEventListener('mousemove', (e) => {
+      if (this.do === 'pen') this.view.move(e);
+      if (this.do === 'eraser') this.view.move(e, 'eraser');
+      if (this.do === 'circle' || this.do === 'stroke-circle') this.view.moveCircle(e);
+      if (this.do === 'rectngle' || this.do === 'stroke-rectngle') this.view.moveRectangle(e);
+      if (this.do === 'move') this.view.moveCanvas(e);
+    });
+
+    this.view.canvas.addEventListener('mouseup', (e) => {
+      if (this.do === 'pen') this.view.up();
+      if (this.do === 'line') this.view.upLine(e);
+      if (this.do === 'eraser') this.view.up();
+      if (this.do === 'circle') this.view.upCircle();
+      if (this.do === 'stroke-circle') this.view.upCircle('stroke');
+      if (this.do === 'rectngle') this.view.upRectangle();
+      if (this.do === 'stroke-rectngle') this.view.upRectangle('stroke');
+      if (this.do === 'move') this.view.upCanvas();
+    });
+
+    this.view.model.framesWrapper.addEventListener('click', (e) => {
+      if (e.target.nodeName === 'BUTTON' || e.target.nodeName === 'I') {
+        e.stopPropagation();
+      } else {
+        const num = e.target.id;
+        this.view.goToTheFram(num);
+      }
+    });
+
+    this.view.model.layerWrapper.addEventListener('click', (e) => {
+      const num = e.target.id;
+      if (num !== null) this.view.goToTheLayer(num);
+    });
   }
-  
+
   done(e) {
     const elem = (e.target.classList.contains('material-icons') || e.target.nodeName === 'IMG') ? e.target.parentElement.className : e.target.className;
     this.was = (this.do !== 'add' || this.do !== 'save' || this.do !== 'play' || this.do !== 'stop' || this.do !== 'full' || this.do !== 'clone' || this.do !== 'turn') ? this.do : this.was;
@@ -116,7 +165,6 @@ export default class AppController {
       this.do = 'stroke-rectngle';
     }
   }
-
 }
 
 const controller = new AppController();
