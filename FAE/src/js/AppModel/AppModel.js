@@ -2,6 +2,7 @@ export default class AppModel {
   constructor() {
     this.frames = [];
     this.framesTwo = [];
+    this.framsAnim = [];
     this.framesWrapper = document.querySelector('.frames-wrapper');
     this.frameTemplate = document.querySelector('#frame-template');
     this.layerWrapper = document.querySelector('.lyers-wrapper');
@@ -62,5 +63,26 @@ export default class AppModel {
 
   getNexNum(activ_fram = 0) {
     return this.framesTwo[activ_fram].img.length - 1;
+  }
+
+  deleteLayer(numfram, numlayer) {
+    this.framesTwo[numfram].img.splice(numlayer, 1);
+    this.frames[numfram].data.splice(numlayer, 1);
+  }
+
+  changeLayer(activenum, activelayer, num) {
+    const image = this.framesTwo[activenum].img[activelayer];
+    const data = this.frames[activenum].data[activelayer];
+    let nextNum = 0;
+    if (Number(activelayer) + Number(num) === -1) {
+      nextNum = this.framesTwo[activenum].img.length - 1;
+    } else {
+      nextNum = (Number(activelayer) + Number(num) === this.framesTwo[activenum].img.length) ? 0 : Number(activelayer) + Number(num);
+    }
+    this.framesTwo[activenum].img[activelayer] = this.framesTwo[activenum].img[nextNum];
+    this.framesTwo[activenum].img[nextNum] = image;
+    this.frames[activenum].data[activelayer] = this.frames[activenum].data[nextNum];
+    this.frames[activenum].data[nextNum] = data;
+    return nextNum;
   }
 }

@@ -280,6 +280,39 @@ export default class AppView {
     }
   }
 
+  drawLayer(num) {
+    const newLayer = document.importNode(this.model.layerTemplate.content, true);
+    const layer = newLayer.querySelector('.layer');
+    layer.id = num;
+    document.querySelector('.lyers-wrapper').appendChild(newLayer);
+  }
+
+  refactiorLayers(num) {
+    document.querySelector('.lyers-wrapper').innerHTML = '';
+    const n = this.model.getNexNum(num);
+    for (let i = 0; i <= n; i += 1) {
+      this.drawLayer(i);
+      this.active_layer = i;
+    }
+  }
+
+  goToTheLayer(num) {
+    this.active_layer = num;
+    this.drawing(this.active_num, num);
+  }
+
+  deleteNewLayer() {
+    if (this.model.getNexNum(this.active_num) > 0) {
+      this.model.deleteLayer(this.active_num, this.active_layer);
+      this.refactior();
+      this.refactiorLayers(this.active_num);
+    } else {
+      this.model.frameDeleteHandler(this.active_num);
+      this.refactior();
+      this.clear();
+      document.querySelector('.lyers-wrapper').innerHTML = '';
+    }
+  }
   //-----------------------
 
   // color (change, select, bucket, fullbucket, transparency)
