@@ -102,6 +102,24 @@ export default class AppView {
     }
     this.context.putImageData(imageData, 0, 0);
   }
+
+  transparency(e, str = 'light') {
+    const xCanvas = e.pageX - this.canvas_cont.offsetLeft;
+    const yCanvas = e.pageY - this.canvas_cont.offsetTop;
+    const c = this.context.getImageData(xCanvas, yCanvas, 1, 1).data;
+    const imageData = this.context.getImageData(0, 0, this.canvas.width, this.canvas.height);
+    const { data } = imageData;
+    for (let i = 0; i < data.length; i += 4) {
+      if (data[i] === c[0] && data[i + 1] === c[1] && data[i + 2] === c[2] && data[i + 3] !== 0) {
+        if (str === 'light') {
+          if (data[i + 3] - 10 >= 0) data[i + 3] = data[i + 3] - 10;
+          else data[i + 3] = 0;
+        } else if (data[i + 3] + 10 <= 255) data[i + 3] = data[i + 3] + 10;
+        else data[i + 3] = 255;
+      }
+    }
+    this.context.putImageData(imageData, 0, 0);
+  }
 //---------------------------
 
 // rectangle
@@ -179,7 +197,8 @@ clear() {
   this.backgroundColor.style.backgroundColor = this.backroundcolor;
   this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
 }
-  // frams
+
+// frams
   frameDraw(x = 1000) {
     const imageData = this.context.getImageData(0, 0, this.canvas.width, this.canvas.height);
     const dataURL = this.canvas.toDataURL();
