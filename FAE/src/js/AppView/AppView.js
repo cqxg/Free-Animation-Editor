@@ -7,6 +7,9 @@ export default class AppView {
     this.canvas = document.getElementById('myCanvas');
     this.backgroundColor = document.getElementById('myColor');
     this.context = this.canvas.getContext('2d');
+    this.paint = false;
+    this.color = 'black';
+    this.backroundcolor = 'white';
     this.width = 10;
     this.model = new AppModel();
   }
@@ -37,7 +40,15 @@ export default class AppView {
     this.context.globalCompositeOperation = 'source-over';
   }
   //-------------------
-  
+
+  //-------------
+
+  clear() {
+    this.backroundcolor = 'white';
+    this.backgroundColor.style.backgroundColor = this.backroundcolor;
+    this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+  }
+
   // color (change, select, bucket, fullbucket, transparency)
   changeColor(e) {
     this.color = e.target.value;
@@ -70,5 +81,5 @@ export default class AppView {
     }
     this.context.putImageData(imageData, 0, 0);
   }
-
+  //---------------------------
 }

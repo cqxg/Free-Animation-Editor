@@ -1,4 +1,6 @@
 import AppView from '../AppView/AppView';
+import rgb2hex from './functions';
+import hexToRgb from './functions1';
 import '../../css/style.css';
 
 export default class AppController {
@@ -8,27 +10,47 @@ export default class AppController {
     this.do = 'pen';
     this.was = 'pen';
     this.tools = document.querySelector('.tools');
-    document.getElementById('get_color').addEventListener('change', e => this.view.changeColor(e));
     this.player = document.querySelector('.play-wrapper');
     this.framsControl = document.querySelector('.button-wrapper');
     this.transformControl = document.querySelector('.transform-tool');
-
     document.getElementById('get_color').addEventListener('change', e => this.view.changeColor(e));
 
     this.tools.addEventListener('click', (e) => {
       this.done(e);
       if (this.do === 'pen' || this.do === 'eraser' || this.do === 'line' || this.do === 'circle' || this.do === 'stroke-circle' || this.do === 'stroke-rectngle' || this.do === 'rectngle') {
         document.getElementById('range-wrapper').style.display = 'block';
+        // eslint-disable-next-line no-shadow
         document.getElementById('width').addEventListener('change', e => this.view.changeWidth(e));
       } else {
         document.getElementById('range-wrapper').style.display = 'none';
       }
     });
 
+  
     this.view.canvas.addEventListener('click', (e) => {
-      if (this.do === 'bucket-full') this.view.bucketFull((this.view.color));
-      if (this.do === 'bucket') this.view.bucket(e, (this.view.color))
-    });;
+      if (this.do === 'bucket-full') this.view.bucketFull(hexToRgb(this.view.color));
+      if (this.do === 'bucket') this.view.bucket(e, hexToRgb(this.view.color));
+      if (this.do === 'pipette') {
+        document.getElementById('get_color').value = rgb2hex(this.view.selectColor(e));
+      }
+    });
+
+    this.view.canvas.addEventListener('mousedown', (e) => {
+      if (this.do === 'pen') this.view.down(e);
+    });
+
+    this.view.canvas.addEventListener('mousemove', (e) => {
+      if (this.do === 'pen') this.view.move(e);
+    });
+
+    this.view.canvas.addEventListener('mouseup', (e) => {
+      if (this.do === 'pen') this.view.up();
+    });
+  }
+  done(e) {
+    const elem = (e.target.classList.contains('material-icons') || e.target.nodeName === 'IMG') ? e.target.parentElement.className : e.target.className;
+    this.was = (this.do !== 'add' || this.do !== 'save' || this.do !== 'play' || this.do !== 'stop' || this.do !== 'full' || this.do !== 'clone' || this.do !== 'turn') ? this.do : this.was;
+    this.do = (this.dones.indexOf(elem) !== -1) ? elem : 'pen';
   }
 }
 
