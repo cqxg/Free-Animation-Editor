@@ -82,4 +82,81 @@ export default class AppView {
     this.context.putImageData(imageData, 0, 0);
   }
   //---------------------------
+
+  // frams
+  frameDraw(x = 1000) {
+    const imageData = this.context.getImageData(0, 0, this.canvas.width, this.canvas.height);
+    const dataURL = this.canvas.toDataURL();
+    const date = this.model.frameDraw(x, imageData, this.backroundcolor, dataURL);
+    this.createFrame(date);
+    this.clear();
+    document.querySelector('.lyers-wrapper').innerHTML = '';
+    this.drawLayer(0);
+    this.active_num = this.model.framesTwo.length - 1;
+  }
+
+  createFrame(obj = {}) {
+    const newFrame = document.importNode(this.model.frameTemplate.content, true);
+    const frame = newFrame.querySelector('.frame');
+    frame.id = `${obj.id}`;
+    frame.style.backgroundColor = this.model.frames[obj.id].background;
+    let url = '';
+    for (let i = 0; i < this.model.frames[obj.id].data.length; i += 1) {
+      url += `url(${this.model.frames[obj.id].data[i]}),`;
+    }
+    url = url.slice(0, url.length - 2);
+    frame.style.backgroundImage = `${url}`;
+    const fragment = document.createDocumentFragment();
+    const frameDelete = newFrame.querySelector('.button-delete');
+    frameDelete.addEventListener('click', e => this.frameDeleteHandler(e));
+    const frameCopy = newFrame.querySelector('.button-copy');
+    frameCopy.addEventListener('click', e => this.frameCopyHandler(e));
+    fragment.appendChild(newFrame);
+    this.model.framesWrapper.appendChild(fragment);
+  }
+
+  frameDeleteHandler(e) {
+    const elem = e.target;
+    const num = (elem.classList.contains('button-delete')) ? elem.parentElement.id : elem.parentElement.parentElement.id;
+    this.model.frameDeleteHandler(num);
+    this.refactior();
+  }
+
+  frameCopyHandler(e) {
+    const elem = e.target;
+    const num = (elem.classList.contains('button-copy')) ? elem.parentElement.id : elem.parentElement.parentElement.id;
+    this.frameDraw(num);
+    this.refactiorLayers(num);
+    this.goToTheFram(this.active_num);
+  }
+
+  saveFrame() {
+    if (this.model.framesTwo.length !== 0) {
+      const imageData = this.context.getImageData(0, 0, this.canvas.width, this.canvas.height);
+      const dataURL = this.canvas.toDataURL();
+      this.model.saveFrameLayer(this.active_num, this.active_layer, imageData, this.backroundcolor, dataURL);
+      this.refactior();
+    }
+  }
+
+  drawing(i = 0, layer = 0) {
+    this.clear();
+    this.context.putImageData(this.model.framesTwo[i].img[layer], 0, 0);
+    this.backgroundColor.style.backgroundColor = this.model.framesTwo[i].background;
+    this.backroundcolor = this.model.framesTwo[i].background;
+  }
+
+  goToTheFram(num) {
+    this.active_num = num;
+    this.drawing(num, 0);
+    this.refactiorLayers(num);
+  }
+
+  refactior() {
+    this.model.framesWrapper.innerHTML = '';
+    this.model.frames.forEach((elem, index) => {
+      this.createFrame({ url: elem, id: index });
+    });
+  }
+  //----------------------
 }
