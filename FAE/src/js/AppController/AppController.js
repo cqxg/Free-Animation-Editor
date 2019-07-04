@@ -15,6 +15,7 @@ export default class AppController {
     this.player = document.querySelector('.play-wrapper');
     this.transformControl = document.querySelector('.transform-tool');
     document.getElementById('get_color').addEventListener('change', e => this.view.changeColor(e));
+    document.addEventListener('keypress', event => this.setTool(event));
 
     this.tools.addEventListener('click', (e) => {
       this.done(e);
@@ -31,6 +32,8 @@ export default class AppController {
     this.view.canvas.addEventListener('click', (e) => {
       if (this.do === 'bucket-full') this.view.bucketFull(hexToRgb(this.view.color));
       if (this.do === 'bucket') this.view.bucket(e, hexToRgb(this.view.color));
+      if (this.do === 'eraser') this.view.down(e);
+      if (this.do === 'line') this.view.upLine(e);
       if (this.do === 'pipette') {
         document.getElementById('get_color').value = rgb2hex(this.view.selectColor(e));
       }
@@ -38,6 +41,9 @@ export default class AppController {
 
     this.view.canvas.addEventListener('mousedown', (e) => {
       if (this.do === 'pen') this.view.down(e);
+      if (this.do === 'eraser') this.view.move(e, 'eraser');
+      if (this.do === 'eraser') this.view.up();
+      if (this.do === 'line') this.view.upLine(e);
     });
 
     this.view.canvas.addEventListener('mousemove', (e) => {
@@ -71,6 +77,30 @@ export default class AppController {
     const elem = (e.target.classList.contains('material-icons') || e.target.nodeName === 'IMG') ? e.target.parentElement.className : e.target.className;
     this.was = (this.do !== 'add' || this.do !== 'save' || this.do !== 'play' || this.do !== 'stop' || this.do !== 'full' || this.do !== 'clone' || this.do !== 'turn') ? this.do : this.was;
     this.do = (this.dones.indexOf(elem) !== -1) ? elem : 'pen';
+  }
+
+  setTool(event) {
+    if (event.keyCode === 49) {
+      this.do = 'pen';
+    } else if (event.keyCode === 50) {
+      this.do = 'line';
+    } else if (event.keyCode === 51) {
+      this.do = 'eraser';
+    } else if (event.keyCode === 52) {
+      this.do = 'bucket-full';
+    } else if (event.keyCode === 53) {
+      this.do = 'bucket';
+    } else if (event.keyCode === 54) {
+      this.do = 'pipette';
+    } else if (event.keyCode === 55) {
+      this.do = 'blackout';
+    } else if (event.keyCode === 56) {
+      this.do = 'lighten';
+    } else if (event.keyCode === 57) {
+      this.do = 'rectngle';
+    } else if (event.keyCode === 58) {
+      this.do = 'stroke-rectngle';
+    }
   }
 
 }
