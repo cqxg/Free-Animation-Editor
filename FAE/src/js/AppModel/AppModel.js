@@ -29,4 +29,16 @@ export default class AppModel {
     this.framesTwo.splice(num, 1);
     this.frames.splice(num, 1);
   }
+
+  cloneFram(num) {
+    const len = this.framesTwo.length;
+    for (let i = 0; i < len; i += 1) {
+      const imageObj = {};
+      const dataObj = {};
+      Object.assign(imageObj, this.framesTwo[num]);
+      Object.assign(dataObj, this.frames[num]);
+      this.framesTwo[i] = imageObj;
+      this.frames[i] = dataObj;
+    }
+  }
 }
