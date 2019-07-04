@@ -197,6 +197,36 @@ up() {
   this.context.globalCompositeOperation = 'source-over';
 }
 
+// move
+downCanvas(e) {
+  this.paint = true;
+  this.img.img = new Image();
+  const dataURL = this.canvas.toDataURL();
+  this.img.img.src = dataURL;
+  this.img.posX = e.pageX - this.canvas_cont.offsetLeft;
+  this.img.posY = e.pageY - this.canvas_cont.offsetTop;
+}
+
+moveCanvas(e) {
+  if (this.paint === true) {
+    this.clear();
+    const dx = e.pageX - this.canvas_cont.offsetLeft - this.img.posX;
+    const dy = e.pageY - this.canvas_cont.offsetTop - this.img.posY;
+    this.context.drawImage(this.img.img, dx, dy);
+  }
+}
+
+// show coordinats
+showCoordinates(e) {
+  document.querySelector('.coordinates').innerHTML = '';
+  document.querySelector('.coordinates').innerHTML = `<p class="coordinates_data">${(e.pageX - this.canvas_cont.offsetLeft) / 64}/${(e.pageX - this.canvas_cont.offsetLeft) / 64}</p>`;
+}
+
+upCanvas() {
+  this.paint = false;
+  this.saveFrame();
+}
+//---------------------
 
   // paint line
   upLine(e) {
