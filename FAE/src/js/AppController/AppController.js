@@ -21,8 +21,8 @@ export default class AppController {
     document.querySelector('.layerUp').addEventListener('click', () => this.view.layerMoving('up'));
     document.querySelector('.layerDown').addEventListener('click', () => this.view.layerMoving('down'));
 
-    //document.querySelector('.saveImg').addEventListener('click', () => this.view.saveCanvasAsImageFile());
-    //document.querySelector('.saveAnimation').addEventListener('click', () => this.view.saveAnimation());
+    document.querySelector('.saveImg').addEventListener('click', () => this.view.saveCanvasAsImageFile());
+    document.querySelector('.saveAnimation').addEventListener('click', () => this.view.saveAnimation());
 
     document.addEventListener('keypress', event => this.setTool(event));
 

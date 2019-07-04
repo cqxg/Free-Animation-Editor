@@ -9,6 +9,14 @@ export default class AppModel {
     this.layerTemplate = document.getElementById('layer-template');
   }
 
+  addEndFrams(dataURL) {
+    this.framsAnim.push(dataURL);
+  }
+
+  clearFrams() {
+    this.framsAnim = [];
+  }
+
   frameDraw(x = 1000, image, backgroundColor, data) {
     let imageData = [];
     let dataURL = [];

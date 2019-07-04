@@ -1,4 +1,7 @@
 import AppModel from '../AppModel/AppModel';
+import GIF from '../gif.js-master/dist/gif';
+import download from './functionDownlode';
+import saveImage from './functionSaveImg';
 
 export default class AppView {
   constructor() {
@@ -479,5 +482,54 @@ export default class AppView {
   }
 
   // saving
+  saveCanvasAsImageFile() {
+    const imageData = this.canvas.toDataURL();
+    const image = new Image();
+    image.src = imageData;
+    saveImage(image);
+  }
 
+  PrevAnimation(){
+    const dataURL = this.canvas.toDataURL();
+    this.model.addEndFrams(dataURL);
+    this.model.addEndFrams(dataURL);
+    for (let i = 0; i < this.model.frames.length; i += 1){
+      let len = this.model.frames[i].data.length;
+      for (let j = 0; j < len; j += 1){
+        this.context.fillStyle = this.model.frames[i].background;
+        this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
+        const newImg = new Image();
+        newImg.src = this.model.frames[i].data[j];
+        this.context.drawImage(newImg, 0, 0);
+      }
+      const dataURL = this.canvas.toDataURL();
+      this.model.addEndFrams(dataURL);
+      this.clear();
+    }
+  }
+
+  saveAnimation() {
+    this.PrevAnimation();
+    const gif = new GIF({
+       workers: 2,
+       quality: 1,
+       width: 644,
+      height: 454,
+    });
+    for (let i = 0; i < this.model.framsAnim.length; i += 1) {
+      const newImg = new Image();
+      newImg.src = this.model.framsAnim[i];
+      gif.addFrame(newImg, {
+        delay: this.speed,
+      });
+    }
+    let resultGif;
+    gif.render();
+    gif.on('finished', (blob) => {
+      resultGif = URL.createObjectURL(blob);
+      console.log(resultGif);
+      download(resultGif);
+    });
+    this.model.clearFrams();
+  }
 }
