@@ -3,6 +3,8 @@
     "version": "1.0.0",
     "description": "simple animation editor by cqxg",
     "scripts": {
+        "lint": "eslint .",
+        "lint:fix": "npm run lint -- --fix",
         "build": "webpack",
         "start": "webpack-dev-server --history-api-fallback --inline --progress"
     },
@@ -10,6 +12,7 @@
     "author": "cqxg",
     "license": "ISC",
     "devDependencies": {
+        "eslint-config-airbnb": "^18.1.0",
         "webpack": "^4.20.2",
         "webpack-cli": "^3.1.2"
     },
@@ -17,6 +20,9 @@
         "babel-core": "^6.26.3",
         "babel-loader": "^7.1.5",
         "babel-preset-env": "^1.7.0",
+        "css-loader": "^3.5.3",
+        "eslint": "^7.2.0",
+        "eslint-plugin-import": "^2.20.2",
         "html-webpack-plugin": "^4.3.0",
         "lodash": "^4.17.5",
         "webpack-dev-server": "^3.11.0"
