@@ -1,3 +1,5 @@
+/* --------------------------------------------------- MAIN STYLES ------------------------------------------------------------------------ */
+
 body {
 	background: url('../styles/assets/dark_wall.png') repeat;
 	margin: 0;
@@ -15,5 +17,5 @@ h1 {
 	text-align: center;
     border-radius: 5px;
 	border: 3px solid rgb(0, 0, 0);
-	background-color: rgb(150, 150, 150);
+	background-color: rgb(200, 200, 200);
 }

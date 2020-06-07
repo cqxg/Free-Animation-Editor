@@ -1,0 +1,49 @@
+
+.pen {
+	background: url('../styles/assets/tools/pen.png') no-repeat;
+}
+
+.line {
+	background: url('../styles/assets/tools/line.png') no-repeat;
+}
+
+.eraser {
+	background: url('../styles/assets/tools/eraser.png') no-repeat;
+}
+
+.bucket {
+	background: url('../styles/assets/tools/bucket.png') no-repeat;
+}
+
+.dropper {
+	background: url('../styles/assets/tools/dropper.png') no-repeat;
+}
+
+.circle {
+	background: url('../styles/assets/tools/circled.png') no-repeat;
+}
+
+.rect {
+	background: url('../styles/assets/tools/rectangle.png') no-repeat;
+}
+
+.mover {
+	background: url('../styles/assets/tools/move.png') no-repeat;
+}
+
+.pen,
+.line,
+.eraser,
+.bucket,
+.dropper,
+.circle,
+.rect,
+.mover {
+	width: 50px;
+    height: 50px;
+    margin: 3px 3px;
+    border-radius: 5px;
+    background-position: center;
+    border: 1px solid rgb(0, 0, 0);
+    background-color: rgb(200, 200, 200);
+}
