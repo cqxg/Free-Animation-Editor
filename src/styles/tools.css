@@ -1,3 +1,10 @@
+.tools {
+	width: 10%;
+	display: flex;
+	flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
 
 .pen {
 	background: url('../styles/assets/tools/pen.png') no-repeat;
@@ -33,21 +40,24 @@
 
 .pen,
 .line,
+.rect,
+.mover,
+.circle,
 .eraser,
 .bucket,
 .dropper,
-.circle,
-.rect,
-.mover {
+.color__selector {
 	width: 60px;
-    height: 60px;
-    margin: 3px 3px;
-    border-radius: 5px;
+	height: 60px;
+	cursor: pointer;
+	margin: 3px 3px;
+	border-radius: 5px;
     background-position: center;
     border: 3px solid rgb(0, 0, 0);
-    background-color: rgb(200, 200, 200);
+	background-color: rgb(200, 200, 200);
+	box-shadow: 0 5px 15px 0 rgb(0, 0, 0)
 }
 
-.tools {
-	width: 10%;
+.color__selector {
+	margin-top: 15px;
 }
