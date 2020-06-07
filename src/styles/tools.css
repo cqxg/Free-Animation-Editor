@@ -38,6 +38,14 @@
 	background: url('../styles/assets/tools/move.png') no-repeat;
 }
 
+.frames__add {
+	background: url('../styles/assets/tools/add.png') no-repeat;
+}
+
+.frames__save {
+	background: url('../styles/assets/tools/save.png') no-repeat;
+}
+
 .pen,
 .line,
 .rect,
@@ -46,6 +54,8 @@
 .eraser,
 .bucket,
 .dropper,
+.frames__add,
+.frames__save,
 .color__selector {
 	width: 60px;
 	height: 60px;
@@ -58,6 +68,24 @@
 	box-shadow: 0 5px 15px 0 rgb(0, 0, 0)
 }
 
+.frames__add,
+.frames__save {
+	border: 2px solid rgb(0, 0, 0);
+	box-shadow: 0 5px 15px 0 rgb(0, 0, 0, 0.3);
+}
+
 .color__selector {
 	margin-top: 15px;
+}
+
+.frames {
+	max-width: 10%;
+	display: flex;
+	flex-wrap: wrap;
+	border-radius: 5px;
+    justify-content: center;
+	height: calc(100vh - 150px);
+	border: 3px solid rgb(0, 0, 0);
+	background-color: rgb(200, 200, 200);
+	box-shadow: 0 5px 15px 0 rgb(0, 0, 0);
 }
