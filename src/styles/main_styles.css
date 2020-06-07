@@ -25,3 +25,10 @@ h1 {
 	border: 3px solid rgb(0, 0, 0);
 	background-color: rgb(200, 200, 200);
 }
+
+@media screen and (max-width: 550px) {
+	main {
+		flex-wrap: wrap;
+		flex-direction: column;
+	}
+}

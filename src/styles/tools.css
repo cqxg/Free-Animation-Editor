@@ -1,9 +1,14 @@
 .tools {
-	width: 10%;
+	margin: 5px;
 	display: flex;
 	flex-wrap: wrap;
-    align-items: center;
+	align-items: center;
+	flex-direction: column;
     justify-content: center;
+}
+
+.tools__btn-wrapper {
+	display: flex;
 }
 
 .pen {
@@ -71,7 +76,7 @@
 .frames__add,
 .frames__save {
 	border: 2px solid rgb(0, 0, 0);
-	box-shadow: 0 5px 15px 0 rgb(0, 0, 0, 0.3);
+	box-shadow: 0 5px 15px 0 rgb(0, 0, 0, 0.2);
 }
 
 .color__selector {
@@ -79,13 +84,23 @@
 }
 
 .frames {
-	max-width: 10%;
+	margin: 5px;
+	height: 600px;
 	display: flex;
 	flex-wrap: wrap;
 	border-radius: 5px;
     justify-content: center;
-	height: calc(100vh - 150px);
 	border: 3px solid rgb(0, 0, 0);
 	background-color: rgb(200, 200, 200);
 	box-shadow: 0 5px 15px 0 rgb(0, 0, 0);
+}
+
+@media screen and (max-width: 550px) {
+	.tools {
+		width: 70%;
+	}
+
+	.frames {
+		width: 40%;
+	}
 }
