@@ -95,6 +95,16 @@
 	box-shadow: 0 5px 15px 0 rgb(0, 0, 0);
 }
 
+.canvas {
+	width: 70%;
+}
+
+.canvas__field {
+	width: 100%;
+	border: 5px solid rgb(0, 0, 0);
+	background-color: rgb(250, 250, 250);
+}
+
 @media screen and (max-width: 550px) {
 	.tools {
 		width: 70%;
