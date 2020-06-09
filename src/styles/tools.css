@@ -69,12 +69,14 @@
 	border-radius: 5px;
     background-position: center;
     border: 3px solid rgb(0, 0, 0);
-	background-color: rgb(200, 200, 200);
+	background-color: rgb(225, 225, 225);
 	box-shadow: 0 5px 15px 0 rgb(0, 0, 0)
 }
 
 .frames__add,
 .frames__save {
+	width: 45px;
+	height: 45px;
 	border: 2px solid rgb(0, 0, 0);
 	box-shadow: 0 5px 15px 0 rgb(0, 0, 0, 0.2);
 }
@@ -84,10 +86,11 @@
 }
 
 .frames {
+	width: 95%;
 	margin: 5px;
-	height: 600px;
+	height: 95px;
 	display: flex;
-	flex-wrap: wrap;
+	flex-direction: column;
 	border-radius: 5px;
     justify-content: center;
 	border: 3px solid rgb(0, 0, 0);
@@ -101,8 +104,21 @@
 
 .canvas__field {
 	width: 100%;
-	border: 5px solid rgb(0, 0, 0);
+	border: 3px solid rgb(0, 0, 0);
 	background-color: rgb(250, 250, 250);
+}
+
+.preview {
+    padding: 15px;
+}
+
+.preview__monitor {
+    width: 300px;
+    height: 215px;
+    border: 3px solid rgb(55, 55, 55);
+    border-radius: 5px;
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-size: 100%
 }
 
 @media screen and (max-width: 550px) {

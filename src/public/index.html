@@ -42,6 +42,33 @@
             <input title="You can choose a color for drawing" type="color" class="color__selector" value='#000000'>
         </section>
 
+        <section class="canvas">
+            <canvas class="canvas__field"></canvas>
+        </section>
+
+        <section class="preview">
+            <div class="preview__monitor">
+            </div>
+
+            <div class="play__block">
+                <button title="Play Animation" class="play">
+                </button>
+                <button title="Stop Animation" class="stop">
+                </button>
+                <button title="Fullscreen" class="full">
+                </button>
+                <div class="save-wrapper">
+                    <button title="Save image" class="saveImg">
+                    </button>
+                    <button title="Save your animation" class="saveAnimation">
+                    </button>
+                </div>
+            </div>
+            <label><input type="range" min="1" max="24" step="1" class='fps_controller'> FPS</label>
+        </section>
+    </main>
+
+    <footer>
 
         <section class="frames">
             <button title="Add new Frame" class="frames__add">
@@ -50,11 +77,8 @@
             </button>
         </section>
 
-        <section class="canvas">
-            <canvas class="canvas__field"></canvas>
-        </section>
+    </footer>
 
-    </main>
 </body>
 
 </html>

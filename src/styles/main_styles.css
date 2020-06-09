@@ -3,7 +3,8 @@ body {
 	margin: 0;
 }
 
-header {
+header,
+footer {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -24,6 +25,10 @@ h1 {
     border-radius: 5px;
 	border: 3px solid rgb(0, 0, 0);
 	background-color: rgb(200, 200, 200);
+}
+
+footer {
+	margin-top: 15px;
 }
 
 @media screen and (max-width: 550px) {
