@@ -1,10 +1,12 @@
 .tools {
-	width: 10%;
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
-	flex-direction: column;
     justify-content: center;
+}
+
+.control__animation-box {
+	width: 20%;
 }
 
 .tools__btn-wrapper {
@@ -124,7 +126,6 @@
 }
 
 .frames {
-	width: 95%;
 	margin: 5px;
 	height: 95px;
 	display: flex;
@@ -147,7 +148,6 @@
 }
 
 .preview {
-	width: 25%;
 	display: flex;
 	align-items: center;
 	flex-direction: column;

@@ -8,78 +8,70 @@
 </head>
 
 <body>
-    <!-- <header>
+    <div class="title">
         <h1>Animation Editor</h1>
-    </header> -->
-
+    </div>
     <main>
 
-        <section class="tools">
-            <div class="tools__btn-wrapper">
+        <div class="canvas">
+            <canvas class="canvas__field"></canvas>
+            <div class="frames">
+                <button title="Add new Frame" class="frames__add">
+                </button>
+                <button title="Save your changes in frames" class="frames__save">
+                </button>
+            </div>
+        </div>
+
+        <div class="control__animation-box">
+
+            <div class="preview">
+
+                <div class="preview__monitor">
+                </div>
+
+                <div class="play__block">
+                    <button title="Play Animation" class="play">
+                    </button>
+                    <button title="Stop Animation" class="stop">
+                    </button>
+                    <button title="Fullscreen" class="full">
+                    </button>
+                    <div class="save__wrapper">
+                        <button title="Save image" class="save__img">
+                            Save Image
+                        </button>
+                        <button title="Save your animation" class="save__animation">
+                            Save Animation
+                        </button>
+                    </div>
+                </div>
+                <!-- <label><input type="range" min="1" max="24" step="1" class='fps_controller'> FPS</label> -->
+            </div>
+
+            <div class="tools">
                 <button title="Main drawing tool" class="pen">
                 </button>
                 <button title="You can draw a line" class="line">
                 </button>
-            </div>
-            <div class="tools__btn-wrapper">
                 <button title="You can paint over the area" class="bucket">
                 </button>
                 <button title="You can erase the drawing" class="eraser">
                 </button>
-            </div>
-            <div class="tools__btn-wrapper">
                 <button title="You can draw a circle" class="circle">
                 </button>
                 <button title="You can draw a rect" class="rect">
                 </button>
-            </div>
-            <div class="tools__btn-wrapper">
                 <button title="Choose a color in the drawing" class="dropper">
                 </button>
                 <button title="You can move the drawing" class="mover">
                 </button>
-            </div>
-            <input title="You can choose a color for drawing" type="color" class="color__selector" value='#000000'>
-        </section>
-
-        <section class="canvas">
-            <canvas class="canvas__field"></canvas>
-        </section>
-
-        <section class="preview">
-            <div class="preview__monitor">
+                <input title="You can choose a color for drawing" type="color" class="color__selector" value='#000000'>
             </div>
 
-            <div class="play__block">
-                <button title="Play Animation" class="play">
-                </button>
-                <button title="Stop Animation" class="stop">
-                </button>
-                <button title="Fullscreen" class="full">
-                </button>
-                <div class="save__wrapper">
-                    <button title="Save image" class="save__img">
-                        Save Image
-                    </button>
-                    <button title="Save your animation" class="save__animation">
-                        Save Animation
-                    </button>
-                </div>
-            </div>
-            <label><input type="range" min="1" max="24" step="1" class='fps_controller'> FPS</label>
-        </section>
+        </div>
+
     </main>
-
-    <footer>
-
-        <!-- <section class="frames">
-            <button title="Add new Frame" class="frames__add">
-            </button>
-            <button title="Save your changes in frames" class="frames__save">
-            </button>
-        </section> -->
-
-    </footer>
 
 </body>
 
