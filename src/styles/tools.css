@@ -2,11 +2,8 @@
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
-    justify-content: center;
-}
-
-.control__animation-box {
-	width: 20%;
+	justify-content: center;
+	flex-direction: column;
 }
 
 .tools__btn-wrapper {
@@ -92,21 +89,24 @@
 
 .save__img,
 .save__animation {
+	width: 195px;
 	margin: 1px;
 	display: flex;
 	border-radius: 3px;
 	align-items: center;
-	justify-content: flex-start;
+	justify-content: center;
 	color: rgb(255, 255, 255);
 	background-color: rgb(0, 0, 0);
 	border: 1px solid rgb(32, 32, 32);
 }
 
 .save__img::before {
+	margin-right: 3px;
 	content: url('../styles/assets/tools/save3.png');
 }
 
 .save__animation::before {
+	margin-right: 3px;
 	content: url('../styles/assets/tools/save3.png');
 }
 
@@ -126,25 +126,25 @@
 }
 
 .frames {
-	margin: 5px;
-	height: 95px;
+	width: 175px;
+	height: 600px;
 	display: flex;
 	border-radius: 5px;
-	flex-direction: column;
     justify-content: center;
-	border: 3px solid rgb(0, 0, 0);
-	background-color: rgb(200, 200, 200);
-	box-shadow: 0 5px 15px 0 rgb(0, 0, 0);
 }
 
 .canvas {
-	width: 50%;
+	width: 750px;
+	height: 600px;
 }
 
 .canvas__field {
 	width: 100%;
+	height: 100%;
+	border-radius: 5px;
 	border: 3px solid rgb(0, 0, 0);
 	background-color: rgb(250, 250, 250);
+	box-shadow: 0 5px 15px 0 rgb(0, 0, 0);
 }
 
 .preview {
@@ -152,23 +152,25 @@
 	align-items: center;
 	flex-direction: column;
 	justify-content: flex-end;
+	box-shadow: 0 5px 15px 0 rgb(0, 0, 0);
 }
 
 .preview__monitor {
-    width: 100%;
-    height: 215px;
+    width: 375px;
+	height: 300px;
+	border-radius: 5px 5px 0px 0px;
 	background-size: 100%;
 	background-repeat: no-repeat;
-	border: 3px solid rgb(55, 55, 55);
+	border: 3px solid rgb(0, 0, 0);
 }
 
 .play__block {
-	width: 100%;
+	width: 375px;
 	align-content: center;
-    background-color: rgb(90, 90, 90);
-	border-right: 3px solid rgb(55, 55, 55);
-	border-bottom: 3px solid rgb(55, 55, 55);
-	border-left: 3px solid rgb(55, 55, 55);
+    background-color: rgb(150, 150, 150);
+	border-right: 3px solid rgb(0, 0, 0);
+	border-bottom: 3px solid rgb(0, 0, 0);
+	border-left: 3px solid rgb(0, 0, 0);
 }
 
 .save__wrapper {
