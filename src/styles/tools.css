@@ -179,11 +179,106 @@
     padding: 4px 0 0 2px;
 }
 
-@media screen and (max-width: 550px) {
-	.tools,
-	.frames,
-	.canvas,
+@media screen and (max-width: 1465px) {
+	.canvas {
+		width: 600px;
+		height: 480px;
+	}
+	.play__block,
+	.preview__monitor {
+		width: 300px;
+	}
+	.preview__monitor {
+		height: 240px;
+	}
+	.save__img,
+	.save__animation {
+		width: auto;
+		padding-right: 3px;
+	}
+}
+
+@media screen and (max-width: 1265px) {
+	.pen,
+	.line,
+	.rect,
+	.mover,
+	.circle,
+	.eraser,
+	.bucket,
+	.dropper,
+	.frames__add,
+	.frames__save,
+	.color__selector {
+		width: 50px;
+		height: 50px;
+	}
 	.preview {
-		width: 90%;
+		margin-right: 7px;
+	}
+	.canvas {
+		width: 500px;
+		height: 400px;
+	}
+}
+
+@media screen and (max-width: 1129px) {
+	.canvas {
+		width: 400px;
+		height: 320px;
+	}
+	.frames {
+		width: 120px;
+	}
+}
+
+@media screen and (max-width: 979px) {
+	.pen,
+	.line,
+	.rect,
+	.mover,
+	.stop,
+	.play,
+	.full,
+	.circle,
+	.eraser,
+	.bucket,
+	.dropper,
+	.frames__add,
+	.frames__save,
+	.color__selector {
+		width: 35px;
+		height: 35px;
+	}
+	.canvas {
+		width: 300px;
+		height: 240px;
+	}
+	.frames {
+		width: 90px;
+	}
+	.preview__monitor {
+		width: 150px;
+		height: 120px;
+	}
+	.play__block {
+		width: 150px;
+		flex-wrap: wrap;
+	}
+	.save__wrapper {
+		position: relative;
+	}
+}
+
+@media screen and (max-width: 674px) {
+	.canvas {
+		width: 150px;
+		height: 120px;
+	}
+}
+
+@media screen and (max-width: 520px) {
+	.frames {
+		height: auto;
 	}
 }

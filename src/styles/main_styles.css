@@ -33,9 +33,26 @@ footer {
 	margin-top: 15px;
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 1265px) {
+	main {
+		justify-content: space-between;
+	}
+	h1 {
+		width: 100%;
+		border-radius: 0;
+		border-right: none;
+		border-left: none;
+	}
+}
+
+@media screen and (max-width: 979px) {
+	.title {
+		display: none;
+	}
+}
+
+@media screen and (max-width: 520px) {
 	main {
 		flex-wrap: wrap;
-		flex-direction: column;
 	}
 }
