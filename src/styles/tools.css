@@ -1,3 +1,7 @@
+.phone__notify {
+	display: none;
+}
+
 .tools {
 	display: flex;
 	flex-wrap: wrap;
@@ -278,7 +282,11 @@
 }
 
 @media screen and (max-width: 520px) {
-	.frames {
-		height: auto;
+	.phone__notify {
+		display: block;
+		margin: 0 auto;
+	}
+	main {
+		display: none;
 	}
 }
