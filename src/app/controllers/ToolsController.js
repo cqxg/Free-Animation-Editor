@@ -13,7 +13,7 @@ const controller = () => {
     //     currentColor: '',
     // };
 
-    let painting;
+    let painting = false;
 
     // let { painting, currentTool, currentColor } = state;
 
@@ -60,18 +60,19 @@ const controller = () => {
     const draw = (e) => {
         if (!painting) return;
 
-        ctx.lineWidth = 10;
+        ctx.lineWidth = 20;
         ctx.lineCap = 'round';
         ctx.strokeStyle = 'red';
-        ctx.lineTo(e.clientX, e.clientY);
+
+        ctx.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
         ctx.stroke();
         ctx.beginPath();
-        ctx.moveTo(e.clientX, e.clientY)
+        ctx.moveTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop)
     };
 
     // tools.addEventListener('click', (e) => toolIdentifier(e));
     canvas.addEventListener('mousedown', startPosition);
-    canvas.addEventListener('mousedown', finishedPosition);
+    canvas.addEventListener('mouseup', finishedPosition);
     canvas.addEventListener('mousemove', draw);
 
 };
