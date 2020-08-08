@@ -14,6 +14,10 @@
 	display: flex;
 }
 
+.active {
+	border-color: red!important;
+}
+
 .pen {
 	background: url('../styles/assets/tools/pen.png') no-repeat;
 }

@@ -7,7 +7,7 @@ const controller = () => {
         switch (e.target.className) {
             case 'pen':
                 pen();
-                console.log('u want pen')
+                e.target.classList.add('active')
                 break;
             case 'line':
                 console.log('u want line')
