@@ -45,8 +45,8 @@ const controller = () => {
     };
 
     const clear = () => {
-        context.fillStyle = 'white';
-        context.fillRect(0, 0, 800, 600);
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, 800, 600);
     };
 
     const createFrame = (frameParams) => {
@@ -100,8 +100,6 @@ const controller = () => {
         const fragment = createFrame({ url: dataURL, id: frameId });
         framesWrapper.appendChild(fragment);
         clear();
-
-        console.log('IMAGE DATA', imageData);
     };
 
     tools.addEventListener('click', (e) => toolIdentifier(e));
