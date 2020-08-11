@@ -45,20 +45,22 @@
         </div>
 
         <div class="frames">
-            <button title="Add new Frame" class="frames__add">
-            </button>
-            <button title="Save your changes in frames" class="frames__save">
-            </button>
+            <div class="frames__btn-wrapper">
+                <button title="Add new Frame" class="frames__add">
+                </button>
+                <button title="Save your changes in frames" class="frames__save">
+                </button>
+            </div>
 
-            <div class="frames-wrapper"></div>
+            <div class="frames__template-wrapper"></div>
 
-            <template id="frame-template">
+            <template class="frame__template">
                 <div class="frame">
-                    <img class="frame-image"></img>
-                    <button class="button-delete">
+                    <img class="frame__image"></img>
+                    <button class="frame__btn-delete">
                         <i class="material-icons">delete</i>
                     </button>
-                    <button class="button-copy">
+                    <button class="frame__btn-copy">
                         <i class="material-icons">file_copy</i>
                     </button>
                 </div>

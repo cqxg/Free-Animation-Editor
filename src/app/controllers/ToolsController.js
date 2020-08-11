@@ -6,8 +6,8 @@ const controller = () => {
 
     const frames = [];
     const framesTwo = [];
-    const framesWrapper = document.querySelector('.frames-wrapper');
-    const frameTemplate = document.querySelector('#frame-template');
+    const framesWrapper = document.querySelector('.frames__template-wrapper');
+    const frameTemplate = document.querySelector('.frame__template');
 
     const canvas = document.querySelector('.canvas__field');
     const ctx = canvas.getContext('2d');
@@ -56,7 +56,7 @@ const controller = () => {
 
         const newFrame = document.importNode(frameTemplate.content, true);
 
-        const frameImage = newFrame.querySelector('.frame-image');
+        const frameImage = newFrame.querySelector('.frame__image');
         const frame = newFrame.querySelector('.frame');
         frame.id = `${id}`;
         frameImage.src = url;
@@ -65,7 +65,7 @@ const controller = () => {
 
         const frameDeleteHandler = (e) => {
             const elem = e.target;
-            const num = (elem.classList.contains('button-delete')) ? elem.parentElement.id : elem.parentElement.parentElement.id;
+            const num = (elem.classList.contains('frame__btn-delete')) ? elem.parentElement.id : elem.parentElement.parentElement.id;
 
             framesTwo.splice(num, 1);
             frames.splice(num, 1);
@@ -74,14 +74,14 @@ const controller = () => {
 
         const frameCopyHandler = (e) => {
             const elem = e.target;
-            const num = (elem.classList.contains('button-copy')) ? elem.parentElement.id : elem.parentElement.parentElement.id;
+            const num = (elem.classList.contains('frame__btn-copy')) ? elem.parentElement.id : elem.parentElement.parentElement.id;
             frameDraw(num);
         }
 
-        const frameDelete = newFrame.querySelector('.button-delete');
+        const frameDelete = newFrame.querySelector('.frame__btn-delete');
         frameDelete.addEventListener('click', frameDeleteHandler);
 
-        const frameCopy = newFrame.querySelector('.button-copy');
+        const frameCopy = newFrame.querySelector('.frame__btn-copy');
         frameCopy.addEventListener('click', frameCopyHandler);
 
         fragment.appendChild(newFrame);
