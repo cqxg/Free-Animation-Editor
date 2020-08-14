@@ -139,7 +139,7 @@
 	display: flex;
 	border-radius: 5px;
 	flex-direction: column;
-	overflow: scroll;
+	overflow-y: scroll;
 }
 
 .canvas {
@@ -189,11 +189,12 @@
 }
 
 .frame {
-    position: relative;
     width: 100px;
     height: 100px;
     margin: 5px auto;
-    border: 1px solid black;
+	border-radius: 5px;
+	position: relative;
+    border: 2px solid rgb(0, 0, 0);
 }
 
 .frame__image {
@@ -203,15 +204,28 @@
 }
 
 .frame__btn-delete {
-    position: absolute;
-    top: 0;
-    right: 0;
+	top: 0;
+	right: 0;
+	width: 28px;
+	height: 28px;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	position: absolute;
+	background: url('../styles/assets/tools/trash.png') no-repeat;
 }
 
 .frame__btn-copy {
-    position: absolute;
-    bottom: 0;
-    right: 0;
+	right: 0;
+	bottom: 0;
+	margin-right: 5px;
+	width: 28px;
+	height: 28px;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	position: absolute;
+	background: url('../styles/assets/tools/copy.png') no-repeat;
 }
 
 .frames__btn-wrapper {
