@@ -11,6 +11,7 @@ const controller = () => {
     const fps = document.getElementById('animation__speed');
     const canvas = document.querySelector('.canvas__field');
     const addFrameBtn = document.querySelector('.frames__add');
+    const previewMonitor = document.querySelector('.preview__monitor');
 
     const state = {
         speed: 1,
@@ -51,15 +52,9 @@ const controller = () => {
     };
 
     const drawing = (i) => {
-        const imgData = [];
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        framesTwo.map(item => {
-            console.log(item);
-            imgData.push(item.imageData)
-        })
-
-        ctx.putImageData(imgData[i], 0, 0);
+        let url = `url(${frames[i].dataURL}),`;
+        url = url.slice(0, url.length - 2);
+        previewMonitor.style.backgroundImage = url;
     };
 
     const playHandler = () => {

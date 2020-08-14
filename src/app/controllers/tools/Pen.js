@@ -2,7 +2,7 @@ export const pen = (canvas, ctx) => {
     const state = {
         painting: false,
         currentPenSize: 20,
-        currentColor: 'black',
+        currentColor: 'red',
     };
 
     let { painting, currentColor, currentPenSize } = state;
