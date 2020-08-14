@@ -30,7 +30,7 @@ export const pen = (canvas, ctx) => {
         ctx.moveTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop)
     };
 
+    canvas.addEventListener('mousemove', draw);
     canvas.addEventListener('mousedown', startPosition);
     canvas.addEventListener('mouseup', finishedPosition);
-    canvas.addEventListener('mousemove', draw);
 };
