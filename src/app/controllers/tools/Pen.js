@@ -1,4 +1,4 @@
-export const pen = () => {
+export const pen = (canvas, ctx) => {
     const state = {
         painting: false,
         currentPenSize: 20,
@@ -6,11 +6,6 @@ export const pen = () => {
     };
 
     let { painting, currentColor, currentPenSize } = state;
-
-    const canvas = document.querySelector('.canvas__field');
-    const ctx = canvas.getContext('2d');
-    canvas.height = canvas.clientHeight;
-    canvas.width = canvas.clientWidth;
 
     const startPosition = (e) => {
         painting = true;
