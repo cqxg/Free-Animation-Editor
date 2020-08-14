@@ -26,11 +26,27 @@ h1 {
 	letter-spacing: initial;
 	color: rgb(0, 0, 0);
     border: 3px solid rgb(0, 0, 0);
-    background-color: rgb(150, 150, 150);
+    background-color: rgb(200, 200, 200);
 }
 
 footer {
 	margin-top: 15px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0);
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  background-color: #1b5abf00;
+}
+
+::-webkit-scrollbar-thumb {
+  width: 3px;
+  border-radius: 5px;
+  border: 1px solid rgb(0, 0, 0);
+  background-color: rgb(150, 150, 150);
 }
 
 @media screen and (max-width: 1265px) {
