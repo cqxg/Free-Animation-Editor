@@ -188,6 +188,10 @@
     padding: 4px 0 0 2px;
 }
 
+.fps__controller {
+	color: white;
+}
+
 .frame {
     width: 100px;
     height: 100px;

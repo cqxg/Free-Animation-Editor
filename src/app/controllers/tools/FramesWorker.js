@@ -1,6 +1,4 @@
-export const framesWorker = (canvas, ctx) => {
-    const frames = [];
-    const framesTwo = [];
+export const framesWorker = (canvas, ctx, frames, framesTwo) => {
     const { width, height } = canvas;
     const dataURL = canvas.toDataURL();
     const imageData = ctx.getImageData(0, 0, width, height);
@@ -19,7 +17,7 @@ export const framesWorker = (canvas, ctx) => {
     const createFrame = (dataURL) => {
         const fragment = document.createDocumentFragment();
         const newFrame = document.importNode(frameTemplate.content, true);
-        
+
         const frame = newFrame.querySelector('.frame');
         const frameImage = newFrame.querySelector('.frame__image');
         const frameCopy = newFrame.querySelector('.frame__btn-copy');
