@@ -75,7 +75,16 @@ const controller = () => {
         const frameCopyHandler = (e) => {
             const elem = e.target;
             const num = (elem.classList.contains('frame__btn-copy')) ? elem.parentElement.id : elem.parentElement.parentElement.id;
-            frameDraw(num);
+            const imageData = framesTwo[num];
+            framesTwo.push(imageData);
+            const dataURL = frames[num];
+            frames.push(dataURL);
+      
+            const frameId = frames.length - 1;
+      
+            const fragment = createFrame({ url: dataURL, id: frameId });
+            framesWrapper.appendChild(fragment);
+            clear();
         }
 
         const frameDelete = newFrame.querySelector('.frame__btn-delete');
@@ -88,7 +97,8 @@ const controller = () => {
         return fragment;
     }
 
-    const addFrame = () => {
+    const addFrame = (num) => {
+        console.log(num)
         const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
         framesTwo.push(imageData);
 
