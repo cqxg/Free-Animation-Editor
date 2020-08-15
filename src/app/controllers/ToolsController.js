@@ -3,8 +3,8 @@ import { framesWorker } from './tools/FramesWorker';
 
 const controller = () => {
     let myAnimation;
-    const frames = [];
-    const framesTwo = [];
+    let frames = [];
+    let framesTwo = [];
     const stop = document.querySelector('.stop');
     const play = document.querySelector('.play');
     const tools = document.querySelector('.tools');
@@ -51,15 +51,22 @@ const controller = () => {
     };
 
     const drawing = (i) => {
+        const imgData = [];
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.putImageData(framesTwo[i], 0, 0);
+
+        framesTwo.map(item => {
+            console.log(item);
+            imgData.push(item.imageData)
+        })
+
+        ctx.putImageData(imgData[i], 0, 0);
     };
 
     const playHandler = () => {
         let i = 0;
         state.speed = fps.valueAsNumber * 10;
 
-        if (framesTwo.length !== 0) {
+        if (framesTwo.length > 1) {
             myAnimation = setInterval(() => {
                 drawing(i);
                 if (i >= framesTwo.length - 1) i = 0;

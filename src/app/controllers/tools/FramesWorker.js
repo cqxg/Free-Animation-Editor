@@ -6,8 +6,10 @@ export const framesWorker = (canvas, ctx, frames, framesTwo) => {
     const frameTemplate = document.querySelector('.frame__template');
     const framesWrapper = document.querySelector('.frames__template-wrapper');
 
-    frames.push(dataURL);
-    framesTwo.push(imageData);
+    let id = frames.length + Math.random().toString(16).slice(2);
+
+    frames.push({ dataURL, id });
+    framesTwo.push({ imageData, id });
 
     const clear = () => {
         ctx.fillStyle = 'white';
@@ -24,8 +26,15 @@ export const framesWorker = (canvas, ctx, frames, framesTwo) => {
         const frameDelete = newFrame.querySelector('.frame__btn-delete');
 
         frameImage.src = dataURL;
+        frame.setAttribute('id', id);
 
-        const frameDeleteHandler = (e) => frame.remove(e.target);
+        const frameDeleteHandler = (e) => {
+            let index = framesTwo.findIndex(item => item.id === e.target.parentElement.id);
+
+            framesTwo.splice(index, 1);
+            frames.splice(index, 1);
+            frame.remove(e.target);
+        };
         const frameCopyHandler = () => framesWrapper.appendChild(createFrame(dataURL));
 
         frameCopy.addEventListener('click', frameCopyHandler);
