@@ -20,6 +20,8 @@ const controller = () => {
     const ctx = canvas.getContext('2d');
     canvas.height = canvas.clientHeight;
     canvas.width = canvas.clientWidth;
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     const toolIdentifier = (e) => {
         switch (e.target.className) {
