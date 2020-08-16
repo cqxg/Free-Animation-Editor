@@ -1,36 +1,38 @@
-export const pen = (canvas, ctx) => {
-    const state = {
-        painting: false,
-        currentPenSize: 20,
-        currentColor: 'red',
-    };
+const pen = (canvas, ctx) => {
+  const state = {
+    painting: false,
+    currentPenSize: 20,
+    currentColor: 'red',
+  };
 
-    let { painting, currentColor, currentPenSize } = state;
+  let { painting, currentColor, currentPenSize } = state;
 
-    const startPosition = (e) => {
-        painting = true;
-        draw(e);
-    };
+  const draw = (e) => {
+    if (!painting) return;
 
-    const finishedPosition = () => {
-        painting = false;
-        ctx.beginPath();
-    };
+    ctx.lineCap = 'round';
+    ctx.lineWidth = currentPenSize;
+    ctx.strokeStyle = currentColor;
 
-    const draw = (e) => {
-        if (!painting) return;
+    ctx.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+  };
 
-        ctx.lineCap = 'round';
-        ctx.lineWidth = currentPenSize;
-        ctx.strokeStyle = currentColor;
+  const startPosition = (e) => {
+    painting = true;
+    draw(e);
+  };
 
-        ctx.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.moveTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop)
-    };
+  const finishedPosition = () => {
+    painting = false;
+    ctx.beginPath();
+  };
 
-    canvas.addEventListener('mousemove', draw);
-    canvas.addEventListener('mousedown', startPosition);
-    canvas.addEventListener('mouseup', finishedPosition);
+  canvas.addEventListener('mousemove', draw);
+  canvas.addEventListener('mousedown', startPosition);
+  canvas.addEventListener('mouseup', finishedPosition);
 };
+
+export default pen;
