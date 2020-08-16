@@ -139,6 +139,9 @@
 	display: flex;
 	border-radius: 5px;
 	flex-direction: column;
+}
+
+.frames__template-wrapper {
 	overflow-y: scroll;
 }
 
