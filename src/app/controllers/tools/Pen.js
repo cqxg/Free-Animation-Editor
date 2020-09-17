@@ -1,14 +1,15 @@
-const pen = (canvas, ctx) => {
+const pen = (canvas, ctx, color) => {
   const state = {
     painting: false,
     currentPenSize: 20,
-    currentColor: 'red',
+    currentColor: color,
   };
 
   let { painting, currentColor, currentPenSize } = state;
 
   const draw = (e) => {
     if (!painting) return;
+    console.log(state.currentColor)
 
     ctx.lineCap = 'round';
     ctx.lineWidth = currentPenSize;
