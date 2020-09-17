@@ -35,7 +35,12 @@ const framesWorker = (canvas, ctx, frames, framesTwo) => {
       frames.splice(index, 1);
       frame.remove(e.target);
     };
-    const frameCopyHandler = () => framesWrapper.appendChild(createFrame(dataURL));
+
+    const frameCopyHandler = () => {
+      frames.push({ dataURL, id });
+      framesTwo.push({ imageData, id });
+      framesWrapper.appendChild(createFrame(dataURL));
+    };
 
     frameCopy.addEventListener('click', frameCopyHandler);
     frameDelete.addEventListener('click', frameDeleteHandler);
