@@ -14,8 +14,9 @@ const controller = () => {
     const colorSelector = document.querySelector('.color__selector');
     const previewMonitor = document.querySelector('.preview__monitor');
 
-    const state = {
+    let state = {
         speed: 1,
+        color: ''
     };
 
     const ctx = canvas.getContext('2d');
@@ -27,12 +28,9 @@ const controller = () => {
 
     const toolIdentifier = (e) => {
         switch (e.target.className) {
-            case 'color__selector':
-                let currColor = colorSelector.value;
-                break;
             case 'pen':
-                pen(canvas, ctx, currColor);
-                e.target.classList.add('active');
+                pen(canvas, ctx, state.color);
+                // e.target.classList.add('active');
                 break;
             case 'line':
                 console.log('u want line');
@@ -87,8 +85,14 @@ const controller = () => {
         play.disabled = false;
     };
 
+    const setColorHandler = () => {
+        state.color = colorSelector.value;
+        pen(canvas, ctx, state.color)
+    };
+
     play.addEventListener('click', playHandler);
     stop.addEventListener('click', stopHandler);
+    colorSelector.addEventListener('change', setColorHandler);
     tools.addEventListener('click', (e) => toolIdentifier(e));
     addFrameBtn.addEventListener('click', () => framesWorker(canvas, ctx, frames, framesTwo));
 };
