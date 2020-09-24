@@ -11,7 +11,8 @@ const pen = (canvas, ctx, color) => {
     ctx.lineCap = 'round';
     ctx.lineWidth = currentPenSize;
     ctx.strokeStyle = color;
-    ctx.fillStyle = color;
+    ctx.fillStyle = ctx.strokeStyle;
+    ctx.lineStyle = ctx.fillStyle;
 
     ctx.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
     ctx.stroke();

@@ -87,12 +87,12 @@ const controller = () => {
 
     const setColorHandler = () => {
         state.color = colorSelector.value;
-        pen(canvas, ctx, state.color)
+        pen(canvas, ctx, state.color);
     };
 
     play.addEventListener('click', playHandler);
     stop.addEventListener('click', stopHandler);
-    colorSelector.addEventListener('change', setColorHandler);
+    colorSelector.addEventListener('input', setColorHandler);
     tools.addEventListener('click', (e) => toolIdentifier(e));
     addFrameBtn.addEventListener('click', () => framesWorker(canvas, ctx, frames, framesTwo));
 };
