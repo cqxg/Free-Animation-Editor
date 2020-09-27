@@ -59,7 +59,7 @@ const controller = () => {
         }
     };
 
-    const drawing = (i) => {
+    const animate = (i) => {
         let url = `url(${frames[i].dataURL}),`;
         url = url.slice(0, url.length - 2);
         previewMonitor.style.backgroundImage = url;
@@ -71,7 +71,7 @@ const controller = () => {
 
         if (framesTwo.length > 1) {
             myAnimation = setInterval(() => {
-                drawing(i);
+                animate(i);
                 if (i >= framesTwo.length - 1) i = 0;
                 else i += 1;
             }, state.speed);
