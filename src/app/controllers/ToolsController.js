@@ -13,6 +13,7 @@ const controller = () => {
     const addFrameBtn = document.querySelector('.frames__add');
     const colorSelector = document.querySelector('.color__selector');
     const previewMonitor = document.querySelector('.preview__monitor');
+    const palette = document.getElementById('palette');
 
     let state = {
         speed: 1,
@@ -25,6 +26,39 @@ const controller = () => {
 
     ctx.fillStyle = 'white';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+
+
+    const animate = (i) => {
+        let url = `url(${frames[i].dataURL}),`;
+        url = url.slice(0, url.length - 2);
+        previewMonitor.style.backgroundImage = url;
+    };
+
+    const playHandler = () => {
+        let i = 0;
+        state.speed = fps.valueAsNumber * 10;
+
+        if (framesTwo.length > 1) {
+            myAnimation = setInterval(() => {
+                animate(i);
+                if (i >= framesTwo.length - 1) i = 0;
+                else i += 1;
+            }, state.speed);
+        }
+
+        play.disabled = true;
+    };
+
+    const stopHandler = () => {
+        clearInterval(myAnimation);
+        play.disabled = false;
+    };
+
+    const setColorHandler = () => {
+        state.color = colorSelector.value;
+        pen(canvas, ctx, state.color);
+    };
 
     const toolIdentifier = (e) => {
         switch (e.target.className) {
@@ -59,40 +93,35 @@ const controller = () => {
         }
     };
 
-    const animate = (i) => {
-        let url = `url(${frames[i].dataURL}),`;
-        url = url.slice(0, url.length - 2);
-        previewMonitor.style.backgroundImage = url;
-    };
+    const generatePalette = (palette) => {
+        // генерируем палитру
+        // в итоге 5^3 цветов = 125
+        for (var r = 0, max = 4; r <= max; r++) {
+            for (var g = 0; g <= max; g++) {
+                for (var b = 0; b <= max; b++) {
+                    var paletteBlock = document.createElement('div');
+                    paletteBlock.className = 'button';
+                    paletteBlock.addEventListener('click', function changeColor(e) {
+                        context.strokeStyle = e.target.style.backgroundColor;
+                    });
 
-    const playHandler = () => {
-        let i = 0;
-        state.speed = fps.valueAsNumber * 10;
+                    paletteBlock.style.backgroundColor = (
+                        'rgb(' + Math.round(r * 255 / max) + ", "
+                        + Math.round(g * 255 / max) + ", "
+                        + Math.round(b * 255 / max) + ")"
+                    );
 
-        if (framesTwo.length > 1) {
-            myAnimation = setInterval(() => {
-                animate(i);
-                if (i >= framesTwo.length - 1) i = 0;
-                else i += 1;
-            }, state.speed);
+                    palette.appendChild(paletteBlock);
+                }
+            }
         }
-
-        play.disabled = true;
     };
 
-    const stopHandler = () => {
-        clearInterval(myAnimation);
-        play.disabled = false;
-    };
-
-    const setColorHandler = () => {
-        state.color = colorSelector.value;
-        pen(canvas, ctx, state.color);
-    };
+    generatePalette(palette);
 
     play.addEventListener('click', playHandler);
     stop.addEventListener('click', stopHandler);
-    colorSelector.addEventListener('input', setColorHandler);
+    // colorSelector.addEventListener('input', setColorHandler);
     tools.addEventListener('click', (e) => toolIdentifier(e));
     addFrameBtn.addEventListener('click', () => framesWorker(canvas, ctx, frames, framesTwo));
 };
