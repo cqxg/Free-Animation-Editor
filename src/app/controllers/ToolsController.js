@@ -11,12 +11,15 @@ const controller = () => {
   const fps = document.getElementById('animation__speed');
   const canvas = document.querySelector('.canvas__field');
   const addFrameBtn = document.querySelector('.frames__add');
+  const changeSizeInput = document.querySelector('.line__width');
   const colorSelector = document.querySelector('.color__selector');
   const previewMonitor = document.querySelector('.preview__monitor');
 
   const state = {
-    speed: 1,
+    speed: '',
     color: '',
+    currTool: '',
+    lineWidth: '10',
   };
 
   const ctx = canvas.getContext('2d');
@@ -29,7 +32,7 @@ const controller = () => {
   const toolIdentifier = (e) => {
     switch (e.target.className) {
       case 'pen':
-        pen(canvas, ctx, state.color);
+        pen(canvas, ctx, state.color, state.lineWidth);
         // e.target.classList.add('active');
         break;
       case 'line':
@@ -87,13 +90,19 @@ const controller = () => {
 
   const setColorHandler = () => {
     state.color = colorSelector.value;
-    pen(canvas, ctx, state.color);
+    pen(canvas, ctx, state.color, state.lineWidth);
+  };
+
+  const setLineWidthHandler = (e) => {
+    state.lineWidth = e.target.value;
+    pen(canvas, ctx, state.color, state.lineWidth);
   };
 
   play.addEventListener('click', playHandler);
   stop.addEventListener('click', stopHandler);
+  tools.addEventListener('click', toolIdentifier);
   colorSelector.addEventListener('input', setColorHandler);
-  tools.addEventListener('click', (e) => toolIdentifier(e));
+  changeSizeInput.addEventListener('input', setLineWidthHandler);
   addFrameBtn.addEventListener('click', () => framesWorker(canvas, ctx, frames, framesTwo));
 };
 

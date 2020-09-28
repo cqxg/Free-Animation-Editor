@@ -1,11 +1,12 @@
-const pen = (canvas, ctx, color) => {
+const pen = (canvas, ctx, color, lineWidth) => {
   const state = {
     painting: false,
-    currentPenSize: 22,
+    currentPenSize: lineWidth,
   };
 
   let { painting, currentPenSize } = state;
   ctx.lineCap = 'round';
+  ctx.lineJoin = 'round';
   ctx.strokeStyle = color;
   ctx.lineWidth = currentPenSize;
 
