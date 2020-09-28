@@ -1,5 +1,6 @@
 body {
 	background: url('../styles/assets/dark_wall.png') repeat;
+	color: white;
 	margin: 0;
 }
 
@@ -42,6 +43,116 @@ h1 {
   border-radius: 5px;
   border: 1px solid rgb(0, 0, 0);
   background-color: rgb(150, 150, 150);
+}
+
+input[type=range] {
+	-webkit-appearance: none;
+	width: 100%;
+	background: transparent;
+}
+  
+input[type=range]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+}
+  
+input[type=range]:focus {
+	outline: none;
+}
+  
+input[type=range]::-ms-track {
+	width: 100%;
+	cursor: pointer;
+	background: transparent; 
+	border-color: transparent;
+	color: transparent;
+}
+
+input[type=range]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	border: 1px solid #000000;
+	height: 10px;
+	width: 15px;
+	border-radius: 3px;
+	background: rgb(225, 225, 225);
+	cursor: pointer;
+	margin-top: -4px;
+	box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+  
+input[type=range]::-moz-range-thumb {
+	box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+	border: 1px solid #000000;
+	height: 10px;
+	width: 15px;
+	border-radius: 3px;
+	background: rgb(225, 225, 225);
+	cursor: pointer;
+}
+  
+input[type=range]::-ms-thumb {
+	box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+	border: 1px solid #000000;
+	height: 10px;
+	width: 15px;
+	border-radius: 3px;
+	background: rgb(225, 225, 225);
+	cursor: pointer;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+	width: 100%;
+	height: 4px;
+	cursor: pointer;
+	box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+	background: red;
+	border-radius: 1.3px;
+	border: 0.2px solid #010101;
+}
+  
+input[type=range]:focus::-webkit-slider-runnable-track {
+	background: red;
+}
+  
+input[type=range]::-moz-range-track {
+	width: 100%;
+	height: 4px;
+	cursor: pointer;
+	box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+	background: red;
+	border-radius: 1.3px;
+	border: 0.2px solid #010101;
+}
+  
+input[type=range]::-ms-track {
+	width: 100%;
+	height: 4px;
+	cursor: pointer;
+	background: transparent;
+	border-color: transparent;
+	border-width: 16px 0;
+	color: transparent;
+}
+
+input[type=range]::-ms-fill-lower {
+	background: red;
+	border: 0.2px solid #010101;
+	border-radius: 2.6px;
+	box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+
+input[type=range]:focus::-ms-fill-lower {
+	background: red;
+}
+
+input[type=range]::-ms-fill-upper {
+	background: red;
+	border: 0.2px solid #010101;
+	border-radius: 2.6px;
+	box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+
+input[type=range]:focus::-ms-fill-upper {
+	background: red;
 }
 
 @media screen and (max-width: 1265px) {

@@ -240,6 +240,10 @@
 	justify-content: center;
 }
 
+.line__width {
+	margin: 5px;
+}
+
 @media screen and (max-width: 1465px) {
 	.canvas {
 		width: 600px;
