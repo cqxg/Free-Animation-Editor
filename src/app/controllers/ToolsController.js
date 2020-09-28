@@ -80,11 +80,18 @@ const controller = () => {
     }
 
     play.disabled = true;
+    fpsInput.disabled = true;
+    play.classList.add('disable');
+    fpsInput.classList.add('disable');
   };
 
   const stopHandler = () => {
     clearInterval(myAnimation);
+
     play.disabled = false;
+    fpsInput.disabled = false;
+    play.classList.remove('disable');
+    fpsInput.classList.remove('disable');
   };
 
   const setColorHandler = () => {

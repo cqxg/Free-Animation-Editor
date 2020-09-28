@@ -155,6 +155,9 @@ input[type=range]:focus::-ms-fill-upper {
 	background: #ff4700;
 }
 
+.disable {
+	opacity: 0.4;
+}
 
 @media screen and (max-width: 1265px) {
 	main {
