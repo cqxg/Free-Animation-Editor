@@ -1,14 +1,10 @@
 const pen = (canvas, ctx, color, lineWidth) => {
-  const state = {
-    painting: false,
-    currentPenSize: lineWidth,
-  };
+  let painting;
 
-  let { painting, currentPenSize } = state;
   ctx.lineCap = 'round';
   ctx.lineJoin = 'round';
   ctx.strokeStyle = color;
-  ctx.lineWidth = currentPenSize;
+  ctx.lineWidth = lineWidth;
 
   const draw = (e) => {
     if (!painting) return;
