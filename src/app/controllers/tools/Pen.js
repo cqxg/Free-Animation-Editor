@@ -1,19 +1,16 @@
 const pen = (canvas, ctx, color) => {
   const state = {
     painting: false,
-    currentPenSize: 20,
+    currentPenSize: 22,
   };
 
   let { painting, currentPenSize } = state;
+  ctx.lineCap = 'round';
+  ctx.strokeStyle = color;
+  ctx.lineWidth = currentPenSize;
 
   const draw = (e) => {
     if (!painting) return;
-    ctx.lineCap = 'round';
-    ctx.lineJoin = 'round';
-    ctx.lineWidth = currentPenSize;
-    ctx.strokeStyle = color;
-    // ctx.fillStyle = ctx.strokeStyle;
-    // ctx.lineStyle = ctx.fillStyle;
 
     ctx.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
     ctx.stroke();
