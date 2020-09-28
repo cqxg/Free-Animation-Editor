@@ -92,7 +92,6 @@
     background-position: center;
     border: 3px solid rgb(0, 0, 0);
 	background-color: rgb(225, 225, 225);
-	box-shadow: 0 5px 15px 0 rgb(0, 0, 0)
 }
 
 .save__img,
@@ -126,7 +125,6 @@
 	width: 49px;
 	height: 49px;
 	border: 2px solid rgb(0, 0, 0);
-	box-shadow: 0 5px 15px 0 rgb(0, 0, 0, 0.2);
 }
 
 .color__selector {
@@ -156,7 +154,6 @@
 	border-radius: 5px;
 	border: 3px solid rgb(0, 0, 0);
 	background-color: rgb(250, 250, 250);
-	box-shadow: 0 5px 15px 0 rgb(0, 0, 0);
 }
 
 .preview {
@@ -164,7 +161,6 @@
 	align-items: center;
 	flex-direction: column;
 	justify-content: flex-end;
-	box-shadow: 0 5px 15px 0 rgb(0, 0, 0);
 }
 
 .preview__monitor {
@@ -193,6 +189,7 @@
 
 .fps__controller {
 	color: white;
+	text-align: center;
 }
 
 .frame {
@@ -240,7 +237,8 @@
 	justify-content: center;
 }
 
-.line__width {
+.line__width, 
+.animation__speed {
 	margin: 5px;
 }
 

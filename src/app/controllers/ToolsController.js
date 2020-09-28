@@ -8,7 +8,7 @@ const controller = () => {
   const stop = document.querySelector('.stop');
   const play = document.querySelector('.play');
   const tools = document.querySelector('.tools');
-  const fps = document.getElementById('animation__speed');
+  const fpsInput = document.querySelector('.animation__speed');
   const canvas = document.querySelector('.canvas__field');
   const addFrameBtn = document.querySelector('.frames__add');
   const changeSizeInput = document.querySelector('.line__width');
@@ -16,10 +16,10 @@ const controller = () => {
   const previewMonitor = document.querySelector('.preview__monitor');
 
   const state = {
-    speed: '',
     color: '',
     currTool: '',
     lineWidth: '10',
+    speed: '200',
   };
 
   const ctx = canvas.getContext('2d');
@@ -70,7 +70,6 @@ const controller = () => {
 
   const playHandler = () => {
     let i = 0;
-    state.speed = fps.valueAsNumber * 10;
 
     if (framesTwo.length > 1) {
       myAnimation = setInterval(() => {
@@ -98,9 +97,14 @@ const controller = () => {
     pen(canvas, ctx, state.color, state.lineWidth);
   };
 
+  const setFpsHandler = (e) => {
+    state.speed = 600 / e.target.value;
+  };
+
   play.addEventListener('click', playHandler);
   stop.addEventListener('click', stopHandler);
   tools.addEventListener('click', toolIdentifier);
+  fpsInput.addEventListener('input', setFpsHandler);
   colorSelector.addEventListener('input', setColorHandler);
   changeSizeInput.addEventListener('input', setLineWidthHandler);
   addFrameBtn.addEventListener('click', () => framesWorker(canvas, ctx, frames, framesTwo));
