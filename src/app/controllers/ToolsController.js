@@ -8,18 +8,19 @@ const controller = () => {
   const stop = document.querySelector('.stop');
   const play = document.querySelector('.play');
   const tools = document.querySelector('.tools');
-  const fpsInput = document.querySelector('.animation__speed');
   const canvas = document.querySelector('.canvas__field');
   const addFrameBtn = document.querySelector('.frames__add');
+  const allButtons = document.getElementsByTagName('button');
+  const fpsInput = document.querySelector('.animation__speed');
   const changeSizeInput = document.querySelector('.line__width');
   const colorSelector = document.querySelector('.color__selector');
   const previewMonitor = document.querySelector('.preview__monitor');
 
   const state = {
     color: '',
-    currTool: '',
-    lineWidth: '10',
     speed: '200',
+    currTool: 'pen',
+    lineWidth: '10',
   };
 
   const ctx = canvas.getContext('2d');
@@ -29,9 +30,20 @@ const controller = () => {
   ctx.fillStyle = 'white';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+  for (let i = 0; i < allButtons.length; i++) {/*прокручиваем в цикле все элементы*/
+    allButtons[i].addEventListener('click', function () {  /*при клике на элемент 
+     */
+      for (let i = 0; i < allButtons.length; i++) {
+        allButtons[i].classList.remove('active'); /*удаляем у всех class active*/
+      }
+      this.classList.add('active');/*добавляем class active по которому кликнули */
+    })
+  }
+
   const toolIdentifier = (e) => {
     switch (e.target.className) {
-      case 'pen':
+      case 'pen active':
+        state.currTool = 'pen';
         pen(canvas, ctx, state.color, state.lineWidth);
         // e.target.classList.add('active');
         break;
