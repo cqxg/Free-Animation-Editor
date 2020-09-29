@@ -30,14 +30,13 @@ const controller = () => {
   ctx.fillStyle = 'white';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  for (let i = 0; i < allButtons.length; i++) {/*прокручиваем в цикле все элементы*/
-    allButtons[i].addEventListener('click', function () {  /*при клике на элемент 
-     */
+  for (let i = 0; i < 8; i++) {
+    allButtons[i].addEventListener('click', () => {
       for (let i = 0; i < allButtons.length; i++) {
-        allButtons[i].classList.remove('active'); /*удаляем у всех class active*/
+        allButtons[i].classList.remove('active');
       }
-      this.classList.add('active');/*добавляем class active по которому кликнули */
-    })
+      allButtons[i].classList.add('active');
+    });
   }
 
   const toolIdentifier = (e) => {
@@ -45,7 +44,6 @@ const controller = () => {
       case 'pen active':
         state.currTool = 'pen';
         pen(canvas, ctx, state.color, state.lineWidth);
-        // e.target.classList.add('active');
         break;
       case 'line':
         console.log('u want line');
