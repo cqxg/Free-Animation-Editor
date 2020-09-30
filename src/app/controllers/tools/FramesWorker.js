@@ -50,6 +50,12 @@ const framesWorker = (canvas, ctx, frames, framesTwo) => {
     return fragment;
   };
 
+  const goToFrame = (e) => {
+    if (e.target.classList.contains('frame__btn-copy') || e.target.classList.contains('frame__btn-delete')) return null;
+    const currItem = framesTwo.filter(item => item.id === e.target.parentElement.id);
+    ctx.putImageData(currItem[0].imageData, 0, 0);
+  }
+
   const saveFrameHandler = () => {
     if (framesTwo.length !== 0) {
       imageData = ctx.getImageData(0, 0, width, height);
@@ -60,6 +66,7 @@ const framesWorker = (canvas, ctx, frames, framesTwo) => {
   framesWrapper.appendChild(createFrame(dataURL));
   clear();
 
+  framesWrapper.addEventListener('click', goToFrame);
   saveFrameBtn.addEventListener('click', saveFrameHandler);
 };
 
