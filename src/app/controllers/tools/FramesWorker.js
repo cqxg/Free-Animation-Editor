@@ -7,6 +7,7 @@ const framesWorker = (canvas, ctx, frames, framesTwo) => {
   const frameTemplate = document.querySelector('.frame__template');
   const framesWrapper = document.querySelector('.frames__template-wrapper');
 
+  let prevId;
   const id = frames.length + Math.random().toString(16).slice(2);
 
   frames.push({ dataURL, id });
@@ -45,23 +46,34 @@ const framesWorker = (canvas, ctx, frames, framesTwo) => {
 
     frameCopy.addEventListener('click', frameCopyHandler);
     frameDelete.addEventListener('click', frameDeleteHandler);
-
     fragment.appendChild(newFrame);
+
     return fragment;
   };
 
   const goToFrame = (e) => {
     if (e.target.classList.contains('frame__btn-copy') || e.target.classList.contains('frame__btn-delete')) return null;
-    const currItem = framesTwo.filter(item => item.id === e.target.parentElement.id);
-    ctx.putImageData(currItem[0].imageData, 0, 0);
-  }
+    const currItem = framesTwo.filter((item) => item.id === e.target.parentElement.id);
+    prevId = currItem[0].id;
+
+    return ctx.putImageData(currItem[0].imageData, 0, 0);
+  };
 
   const saveFrameHandler = () => {
+
     if (framesTwo.length !== 0) {
-      imageData = ctx.getImageData(0, 0, width, height);
-      dataURL = ctx.toDataURL();
+      framesTwo.map((item) => {
+        if (item.id === prevId) {
+          item.imageData = ctx.getImageData(0, 0, width, height);
+        }
+      })
+      frames.map((item) => {
+        if (item.id === prevId) {
+          item.dataURL = canvas.toDataURL();
+        }
+      })
     }
-  }
+  };
 
   framesWrapper.appendChild(createFrame(dataURL));
   clear();

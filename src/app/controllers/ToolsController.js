@@ -34,13 +34,13 @@ const controller = () => {
   play.disabled = true;
   play.classList.add('disable');
 
-  let observer = new MutationObserver(() => {
+  const observer = new MutationObserver(() => {
     if (framesTwo.length > 1) {
       play.disabled = false;
       play.classList.remove('disable');
     } else {
       play.disabled = true;
-      play.classList.add('disable')
+      play.classList.add('disable');
     }
   });
 
@@ -48,8 +48,8 @@ const controller = () => {
 
   for (let i = 0; i < 8; i++) {
     allButtons[i].addEventListener('click', () => {
-      for (let i = 0; i < allButtons.length; i++) {
-        allButtons[i].classList.remove('active');
+      for (let j = 0; j < allButtons.length; j++) {
+        allButtons[j].classList.remove('active');
       }
       allButtons[i].classList.add('active');
     });
