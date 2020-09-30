@@ -15,6 +15,7 @@ const controller = () => {
   const changeSizeInput = document.querySelector('.line__width');
   const colorSelector = document.querySelector('.color__selector');
   const previewMonitor = document.querySelector('.preview__monitor');
+  const framesWrapper = document.querySelector('.frames__template-wrapper');
 
   const state = {
     color: '',
@@ -29,6 +30,23 @@ const controller = () => {
 
   ctx.fillStyle = 'white';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  play.disabled = true;
+  play.classList.add('disable');
+
+  let observer = new MutationObserver(() => {
+    if (framesTwo.length > 1) {
+      console.log(framesTwo)
+      play.disabled = false;
+      play.classList.remove('disable')
+    } else {
+      console.log(framesTwo)
+      play.disabled = true;
+      play.classList.add('disable')
+    }
+  });
+
+  observer.observe(framesWrapper, { childList: true });
 
   for (let i = 0; i < 8; i++) {
     allButtons[i].addEventListener('click', () => {
