@@ -157,6 +157,7 @@ input[type=range]:focus::-ms-fill-upper {
 
 .disable {
 	opacity: 0.4;
+	pointer-events: none;
 }
 
 @media screen and (max-width: 1265px) {

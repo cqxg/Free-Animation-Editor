@@ -36,11 +36,9 @@ const controller = () => {
 
   let observer = new MutationObserver(() => {
     if (framesTwo.length > 1) {
-      console.log(framesTwo)
       play.disabled = false;
-      play.classList.remove('disable')
+      play.classList.remove('disable');
     } else {
-      console.log(framesTwo)
       play.disabled = true;
       play.classList.add('disable')
     }
@@ -109,8 +107,13 @@ const controller = () => {
 
     play.disabled = true;
     fpsInput.disabled = true;
+    addFrameBtn.disabled = true;
+
+
     play.classList.add('disable');
     fpsInput.classList.add('disable');
+    addFrameBtn.classList.add('disable');
+    framesWrapper.classList.add('disable');
   };
 
   const stopHandler = () => {
@@ -118,8 +121,12 @@ const controller = () => {
 
     play.disabled = false;
     fpsInput.disabled = false;
+    addFrameBtn.disabled = false;
+
     play.classList.remove('disable');
     fpsInput.classList.remove('disable');
+    addFrameBtn.classList.remove('disable');
+    framesWrapper.classList.remove('disable');
   };
 
   const setColorHandler = () => {
