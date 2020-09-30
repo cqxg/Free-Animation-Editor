@@ -1,8 +1,9 @@
 const framesWorker = (canvas, ctx, frames, framesTwo) => {
   const { width, height } = canvas;
-  const dataURL = canvas.toDataURL();
-  const imageData = ctx.getImageData(0, 0, width, height);
+  let dataURL = canvas.toDataURL();
+  let imageData = ctx.getImageData(0, 0, width, height);
 
+  const saveFrameBtn = document.querySelector('.frames__save');
   const frameTemplate = document.querySelector('.frame__template');
   const framesWrapper = document.querySelector('.frames__template-wrapper');
 
@@ -49,8 +50,17 @@ const framesWorker = (canvas, ctx, frames, framesTwo) => {
     return fragment;
   };
 
+  const saveFrameHandler = () => {
+    if (framesTwo.length !== 0) {
+      imageData = ctx.getImageData(0, 0, width, height);
+      dataURL = ctx.toDataURL();
+    }
+  }
+
   framesWrapper.appendChild(createFrame(dataURL));
   clear();
+
+  saveFrameBtn.addEventListener('click', saveFrameHandler);
 };
 
 export default framesWorker;
