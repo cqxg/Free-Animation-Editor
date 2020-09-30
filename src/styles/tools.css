@@ -66,10 +66,6 @@
 	background: url('../styles/assets/tools/add.png') no-repeat;
 }
 
-.frames__save {
-	background: url('../styles/assets/tools/save.png') no-repeat;
-}
-
 .pen,
 .line,
 .rect,
@@ -82,7 +78,6 @@
 .bucket,
 .dropper,
 .frames__add,
-.frames__save,
 .color__selector {
 	width: 55px;
 	height: 55px;
@@ -90,7 +85,7 @@
 	margin: 3px 3px;
 	border-radius: 5px;
 	background-position: center;
-	border: 3px solid rgb(0, 0, 0);
+	border: 2px solid rgb(0, 0, 0);
 	background-color: rgb(225, 225, 225);
 }
 
@@ -117,14 +112,12 @@
 	content: url('../styles/assets/tools/save3.png');
 }
 
-.frames__add,
-.frames__save,
 .stop,
 .play,
 .full {
 	width: 49px;
 	height: 49px;
-	border: 3px solid rgb(0, 0, 0);
+	border: 2px solid rgb(0, 0, 0);
 }
 
 .frames {
@@ -148,7 +141,7 @@
 	width: 100%;
 	height: 100%;
 	border-radius: 5px;
-	border: 3px solid rgb(0, 0, 0);
+	border: 2px solid rgb(0, 0, 0);
 	background-color: rgb(250, 250, 250);
 }
 
@@ -165,16 +158,16 @@
 	border-radius: 5px 5px 0px 0px;
 	background-size: 100%;
 	background-repeat: no-repeat;
-	border: 3px solid rgb(0, 0, 0);
+	border: 2px solid rgb(0, 0, 0);
 }
 
 .play__block {
 	width: 375px;
 	align-content: center;
     background-color: rgb(150, 150, 150);
-	border-right: 3px solid rgb(0, 0, 0);
-	border-bottom: 3px solid rgb(0, 0, 0);
-	border-left: 3px solid rgb(0, 0, 0);
+	border-right: 2px solid rgb(0, 0, 0);
+	border-bottom: 2px solid rgb(0, 0, 0);
+	border-left: 2px solid rgb(0, 0, 0);
 }
 
 .save__wrapper {
@@ -266,8 +259,6 @@
 	.eraser,
 	.bucket,
 	.dropper,
-	.frames__add,
-	.frames__save,
 	.color__selector {
 		width: 50px;
 		height: 50px;
@@ -303,8 +294,6 @@
 	.eraser,
 	.bucket,
 	.dropper,
-	.frames__add,
-	.frames__save,
 	.color__selector {
 		width: 35px;
 		height: 35px;

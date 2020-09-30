@@ -3,12 +3,11 @@ const framesWorker = (canvas, ctx, frames, framesTwo) => {
   let dataURL = canvas.toDataURL();
   let imageData = ctx.getImageData(0, 0, width, height);
 
-  const saveFrameBtn = document.querySelector('.frames__save');
+  const id = frames.length + Math.random().toString(16).slice(2);
   const frameTemplate = document.querySelector('.frame__template');
   const framesWrapper = document.querySelector('.frames__template-wrapper');
 
   let prevId;
-  const id = frames.length + Math.random().toString(16).slice(2);
 
   frames.push({ dataURL, id });
   framesTwo.push({ imageData, id });
@@ -59,27 +58,10 @@ const framesWorker = (canvas, ctx, frames, framesTwo) => {
     return ctx.putImageData(currItem[0].imageData, 0, 0);
   };
 
-  const saveFrameHandler = () => {
-
-    if (framesTwo.length !== 0) {
-      framesTwo.map((item) => {
-        if (item.id === prevId) {
-          item.imageData = ctx.getImageData(0, 0, width, height);
-        }
-      })
-      frames.map((item) => {
-        if (item.id === prevId) {
-          item.dataURL = canvas.toDataURL();
-        }
-      })
-    }
-  };
-
   framesWrapper.appendChild(createFrame(dataURL));
   clear();
 
   framesWrapper.addEventListener('click', goToFrame);
-  saveFrameBtn.addEventListener('click', saveFrameHandler);
 };
 
 export default framesWorker;
