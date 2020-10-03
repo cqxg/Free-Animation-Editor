@@ -69,6 +69,22 @@
 	background: url('../styles/assets/tools/add.png') no-repeat;
 }
 
+.pen:hover,
+.line:hover,
+.rect:hover,
+.stop:hover,
+.play:hover,
+.full:hover,
+.mover:hover,
+.circle:hover,
+.eraser:hover,
+.bucket:hover,
+.dropper:hover,
+.frames__add:hover,
+.color__selector:hover {
+	box-shadow: 0px 0px 2px 1px #ff4700;
+}
+
 .pen,
 .line,
 .rect,
@@ -84,6 +100,7 @@
 .color__selector {
 	width: 55px;
 	height: 55px;
+	outline: none;
 	cursor: pointer;
 	margin: 3px 3px;
 	border-radius: 5px;
@@ -97,6 +114,7 @@
 	width: 195px;
 	margin: 1px;
 	display: flex;
+	outline: none;
 	border-radius: 3px;
 	align-items: center;
 	justify-content: center;
@@ -113,6 +131,11 @@
 .save__animation::before {
 	margin-right: 3px;
 	content: url('../styles/assets/tools/save3.png');
+}
+
+.save__img:hover,
+.save__animation:hover {
+	box-shadow: 0px 0px 1px 1px #ff4700;
 }
 
 .stop,
