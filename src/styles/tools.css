@@ -63,6 +63,9 @@
 }
 
 .frames__add {
+	outline: none;
+	width: 50%!important;
+	height: 40px!important;
 	background: url('../styles/assets/tools/add.png') no-repeat;
 }
 
