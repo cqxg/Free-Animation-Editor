@@ -1,4 +1,8 @@
-import GIF from '../gif/dist/gif';
+import saveImgHandler from './handlers/saveImgHandler';
+import saveAnimationHandler from './handlers/saveAnimationHandler';
+import setFpsHandler from './handlers/setFpsHandler';
+import playHandler from './handlers/playHandler';
+import stopHandler from './handlers/stopHandler';
 
 import pen from './tools/Pen';
 import framesWorker from './tools/FramesWorker';
@@ -7,7 +11,6 @@ const controller = () => {
   let myAnimation;
   const frames = [];
   const framesTwo = [];
-  let framesAnim = [];
   const stop = document.querySelector('.stop');
   const play = document.querySelector('.play');
   const tools = document.querySelector('.tools');
@@ -17,10 +20,10 @@ const controller = () => {
   const fpsInput = document.querySelector('.animation__speed');
   const changeSizeInput = document.querySelector('.line__width');
   const colorSelector = document.querySelector('.color__selector');
-  const previewMonitor = document.querySelector('.preview__monitor');
   const framesWrapper = document.querySelector('.frames__template-wrapper');
   const saveImg = document.querySelector('.save__img');
   const saveAnimation = document.querySelector('.save__animation');
+  const previewMonitor = document.querySelector('.preview__monitor');
 
   const state = {
     color: '',
@@ -93,47 +96,6 @@ const controller = () => {
     }
   };
 
-  const animate = (i) => {
-    let url = `url(${frames[i].dataURL}),`;
-    url = url.slice(0, url.length - 2);
-    previewMonitor.style.backgroundImage = url;
-  };
-
-  const playHandler = () => {
-    let i = 0;
-
-    if (framesTwo.length > 1) {
-      myAnimation = setInterval(() => {
-        animate(i);
-        if (i >= framesTwo.length - 1) i = 0;
-        else i += 1;
-      }, state.speed);
-    }
-
-    play.disabled = true;
-    fpsInput.disabled = true;
-    addFrameBtn.disabled = true;
-
-
-    play.classList.add('disable');
-    fpsInput.classList.add('disable');
-    addFrameBtn.classList.add('disable');
-    framesWrapper.classList.add('disable');
-  };
-
-  const stopHandler = () => {
-    clearInterval(myAnimation);
-
-    play.disabled = false;
-    fpsInput.disabled = false;
-    addFrameBtn.disabled = false;
-
-    play.classList.remove('disable');
-    fpsInput.classList.remove('disable');
-    addFrameBtn.classList.remove('disable');
-    framesWrapper.classList.remove('disable');
-  };
-
   const setColorHandler = () => {
     state.color = colorSelector.value;
     pen(canvas, ctx, state.color, state.lineWidth);
@@ -144,69 +106,15 @@ const controller = () => {
     pen(canvas, ctx, state.color, state.lineWidth);
   };
 
-  const setFpsHandler = (e) => {
-    state.speed = 600 / e.target.value;
-  };
-
-  const saveImgHandler = () => {
-    const image = new Image();
-    const imageData = canvas.toDataURL();
-    const link = document.createElement('a');
-
-    image.src = imageData;
-
-    link.setAttribute('href', image.src);
-    link.setAttribute('download', 'canvasImage');
-    link.click();
-  };
-
-  // ---------------------------------------------WORK WITH ANIMATIONА ---------------------------------------------------------------
-
-  const download = (file) => {
-    const element = document.createElement('a');
-
-    element.setAttribute('href', file);
-    element.setAttribute('download', 'filename');
-    element.click();
-  };
-
-  const saveFramesAsGifFile = () => {
-    frames.map(item => framesAnim.push(item.dataURL));
-
-    const gif = new GIF({
-      workers: 2,
-      quality: 1,
-      width: canvas.width,
-      height: canvas.height,
-    });
-
-    for (let i = 0; i < framesAnim.length; i += 1) {
-      const image = new Image();
-      image.src = framesAnim[i];
-
-      gif.addFrame(image, {
-        delay: state.speed,
-      });
-    }
-
-    gif.render();
-    gif.on('finished', (blob) => download(URL.createObjectURL(blob)));
-
-    framesAnim = [];
-  }
-
-  // ---------------------------------------------WORK WITH ANIMATIONА ---------------------------------------------------------------
-
-
-  play.addEventListener('click', playHandler);
-  stop.addEventListener('click', stopHandler);
   tools.addEventListener('click', toolIdentifier);
-  fpsInput.addEventListener('input', setFpsHandler);
   colorSelector.addEventListener('input', setColorHandler);
-  saveImg.addEventListener('click', saveImgHandler);
-  saveAnimation.addEventListener('click', saveFramesAsGifFile);
   changeSizeInput.addEventListener('input', setLineWidthHandler);
+  saveImg.addEventListener('click', () => saveImgHandler(params));
   addFrameBtn.addEventListener('click', () => framesWorker(canvas, ctx, frames, framesTwo));
+  fpsInput.addEventListener('input', (e) => { state.speed = setFpsHandler(e, state.speed) });
+  saveAnimation.addEventListener('click', () => saveAnimationHandler(frames, canvas.width, canvas.height, state.speed));
+  stop.addEventListener('click', () => { myAnimation = stopHandler(myAnimation, play, fpsInput, framesWrapper, addFrameBtn) });
+  play.addEventListener('click', () => { myAnimation = playHandler(frames, framesTwo, state.speed, myAnimation, play, fpsInput, previewMonitor, framesWrapper, addFrameBtn) });
 };
 
 document.addEventListener('DOMContentLoaded', controller);
