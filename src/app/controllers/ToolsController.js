@@ -148,7 +148,7 @@ const controller = () => {
     state.speed = 600 / e.target.value;
   };
 
-  const saveCanvasAsImageFile = () => {
+  const saveImgHandler = () => {
     const image = new Image();
     const imageData = canvas.toDataURL();
     const link = document.createElement('a');
@@ -164,7 +164,7 @@ const controller = () => {
 
   const download = (file) => {
     const element = document.createElement('a');
-    
+
     element.setAttribute('href', file);
     element.setAttribute('download', 'filename');
     element.click();
@@ -203,7 +203,7 @@ const controller = () => {
   tools.addEventListener('click', toolIdentifier);
   fpsInput.addEventListener('input', setFpsHandler);
   colorSelector.addEventListener('input', setColorHandler);
-  saveImg.addEventListener('click', saveCanvasAsImageFile);
+  saveImg.addEventListener('click', saveImgHandler);
   saveAnimation.addEventListener('click', saveFramesAsGifFile);
   changeSizeInput.addEventListener('input', setLineWidthHandler);
   addFrameBtn.addEventListener('click', () => framesWorker(canvas, ctx, frames, framesTwo));
