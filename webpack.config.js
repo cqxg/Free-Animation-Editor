@@ -34,10 +34,10 @@ module.exports = {
     new CleanWebpackPlugin(),
     new CopyPlugin({
       patterns: [
-        { from: './src/app/gif/dist/gif.worker.js', to: "" },
-        { from: './src/app/gif/dist/gif.worker.js.map', to: "" },
-        { from: './src/app/gif/dist/gif.js.map', to: "" },
-        { from: './src/app/gif/dist/gif.js', to: "" },
+        { from: './src/app/gif/gif.worker.js', to: "" },
+        { from: './src/app/gif/gif.worker.js.map', to: "" },
+        { from: './src/app/gif/gif.js.map', to: "" },
+        { from: './src/app/gif/gif.js', to: "" },
       ],
     }),
     new HtmlWebpackPlugin({

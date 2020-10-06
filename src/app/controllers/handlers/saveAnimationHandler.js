@@ -1,4 +1,4 @@
-import GIF from '../../gif/dist/gif';
+import GIF from '../../gif/gif';
 
 const saveAnimationHandler = (params) => {
     const { frames, width, height, speed } = params;
