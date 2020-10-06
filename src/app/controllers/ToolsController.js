@@ -16,6 +16,8 @@ const controller = () => {
   const colorSelector = document.querySelector('.color__selector');
   const previewMonitor = document.querySelector('.preview__monitor');
   const framesWrapper = document.querySelector('.frames__template-wrapper');
+  const saveImg = document.querySelector('.save__img');
+
 
   const state = {
     color: '',
@@ -143,10 +145,21 @@ const controller = () => {
     state.speed = 600 / e.target.value;
   };
 
+  const saveCanvasAsImageFile = () => {
+    const imageData = canvas.toDataURL();
+    const image = new Image();
+    image.src = imageData;
+    const link = document.createElement('a');
+    link.setAttribute('href', image.src);
+    link.setAttribute('download', 'canvasImage');
+    link.click();
+  };
+
   play.addEventListener('click', playHandler);
   stop.addEventListener('click', stopHandler);
   tools.addEventListener('click', toolIdentifier);
   fpsInput.addEventListener('input', setFpsHandler);
+  saveImg.addEventListener('click', saveCanvasAsImageFile);
   colorSelector.addEventListener('input', setColorHandler);
   changeSizeInput.addEventListener('input', setLineWidthHandler);
   addFrameBtn.addEventListener('click', () => framesWorker(canvas, ctx, frames, framesTwo));
