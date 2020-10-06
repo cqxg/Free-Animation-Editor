@@ -32,12 +32,14 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new CopyPlugin([
-      { from: './src/app/gif/dist/gif.worker.js', to: "" },
-      { from: './src/app/gif/dist/gif.worker.js.map', to: "" },
-      { from: './src/app/gif/dist/gif.js.map', to: "" },
-      { from: './src/app/gif/dist/gif.js', to: "" },
-    ]),
+    new CopyPlugin({
+      patterns: [
+        { from: './src/app/gif/dist/gif.worker.js', to: "" },
+        { from: './src/app/gif/dist/gif.worker.js.map', to: "" },
+        { from: './src/app/gif/dist/gif.js.map', to: "" },
+        { from: './src/app/gif/dist/gif.js', to: "" },
+      ],
+    }),
     new HtmlWebpackPlugin({
       template: `${__dirname}/src/public/index.html`,
       inject: 'body',
