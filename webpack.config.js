@@ -1,4 +1,6 @@
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: `${__dirname}/src/app/index.js`,
@@ -29,6 +31,13 @@ module.exports = {
     ],
   },
   plugins: [
+    new CleanWebpackPlugin(),
+    new CopyPlugin([
+      { from: './src/app/gif/dist/gif.worker.js', to: "" },
+      { from: './src/app/gif/dist/gif.worker.js.map', to: "" },
+      { from: './src/app/gif/dist/gif.js.map', to: "" },
+      { from: './src/app/gif/dist/gif.js', to: "" },
+    ]),
     new HtmlWebpackPlugin({
       template: `${__dirname}/src/public/index.html`,
       inject: 'body',

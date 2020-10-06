@@ -1,3 +1,5 @@
+import GIF from '../gif/dist/gif';
+
 import pen from './tools/Pen';
 import framesWorker from './tools/FramesWorker';
 
@@ -5,6 +7,7 @@ const controller = () => {
   let myAnimation;
   const frames = [];
   const framesTwo = [];
+  let framesAnim = [];
   const stop = document.querySelector('.stop');
   const play = document.querySelector('.play');
   const tools = document.querySelector('.tools');
@@ -17,7 +20,7 @@ const controller = () => {
   const previewMonitor = document.querySelector('.preview__monitor');
   const framesWrapper = document.querySelector('.frames__template-wrapper');
   const saveImg = document.querySelector('.save__img');
-
+  const saveAnimation = document.querySelector('.save__animation');
 
   const state = {
     color: '',
@@ -146,21 +149,83 @@ const controller = () => {
   };
 
   const saveCanvasAsImageFile = () => {
-    const imageData = canvas.toDataURL();
     const image = new Image();
-    image.src = imageData;
+    const imageData = canvas.toDataURL();
     const link = document.createElement('a');
+
+    image.src = imageData;
+
     link.setAttribute('href', image.src);
     link.setAttribute('download', 'canvasImage');
     link.click();
   };
 
+  // ---------------------------------------------WORK WITH ANIMATIONА ---------------------------------------------------------------
+  // const prevAnimation = () => {
+  //   console.log(frames)
+  //   for (let i = 0; i < frames.length; i += 1) {
+  //     let len = frames[i].imageData.data.length;
+  //     console.log(frames[i].imageData.data.length)
+  //     for (let j = 0; j < len; j += 1) {
+  //       ctx.fillRect(0, 0, canvas.width, canvas.height);
+  //       const newImg = new Image();
+  //       newImg.src = frames[i].imageData.data[j];
+  //       ctx.drawImage(newImg, 0, 0);
+  //     }
+  //     const dataURL = canvas.toDataURL();
+  //     framesAnim.push(dataURL);
+  //     clear();
+  //   }
+  // }
+
+  const download = (file) => {
+    const element = document.createElement('a');
+    element.setAttribute('href', file);
+    element.setAttribute('download', 'filename');
+    element.style.display = 'none';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+  };
+
+  const saveFramesAsGifFile = () => {
+    frames.map(item => framesAnim.push(item.dataURL));
+
+    console.log(framesAnim)
+
+    const gif = new GIF({
+      workers: 2,
+      quality: 1,
+      width: canvas.width,
+      height: canvas.height,
+    });
+    for (let i = 0; i < framesAnim.length; i += 1) {
+      const newImg = new Image();
+      newImg.src = framesAnim[i];
+      gif.addFrame(newImg, {
+        delay: state.speed,
+      });
+    }
+    let resultGif;
+    gif.render();
+    gif.on('finished', (blob) => {
+      resultGif = URL.createObjectURL(blob);
+      console.log(resultGif);
+      download(resultGif);
+    });
+    framesAnim = [];
+  }
+
+  // ---------------------------------------------WORK WITH ANIMATIONА ---------------------------------------------------------------
+
+
   play.addEventListener('click', playHandler);
   stop.addEventListener('click', stopHandler);
   tools.addEventListener('click', toolIdentifier);
   fpsInput.addEventListener('input', setFpsHandler);
-  saveImg.addEventListener('click', saveCanvasAsImageFile);
   colorSelector.addEventListener('input', setColorHandler);
+  saveImg.addEventListener('click', saveCanvasAsImageFile);
+  saveAnimation.addEventListener('click', saveFramesAsGifFile);
   changeSizeInput.addEventListener('input', setLineWidthHandler);
   addFrameBtn.addEventListener('click', () => framesWorker(canvas, ctx, frames, framesTwo));
 };
