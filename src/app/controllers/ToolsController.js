@@ -1,8 +1,8 @@
-import saveImgHandler from './handlers/saveImgHandler';
-import saveAnimationHandler from './handlers/saveAnimationHandler';
-import setFpsHandler from './handlers/setFpsHandler';
 import playHandler from './handlers/playHandler';
 import stopHandler from './handlers/stopHandler';
+import setFpsHandler from './handlers/setFpsHandler';
+import saveImgHandler from './handlers/saveImgHandler';
+import saveAnimationHandler from './handlers/saveAnimationHandler';
 
 import pen from './tools/Pen';
 import framesWorker from './tools/FramesWorker';
@@ -11,19 +11,19 @@ const controller = () => {
   let myAnimation;
   const frames = [];
   const framesTwo = [];
-  const stop = document.querySelector('.stop');
   const play = document.querySelector('.play');
+  const stop = document.querySelector('.stop');
   const tools = document.querySelector('.tools');
+  const saveImg = document.querySelector('.save__img');
   const canvas = document.querySelector('.canvas__field');
-  const addFrameBtn = document.querySelector('.frames__add');
   const allButtons = document.getElementsByTagName('button');
+  const addFrameBtn = document.querySelector('.frames__add');
   const fpsInput = document.querySelector('.animation__speed');
   const changeSizeInput = document.querySelector('.line__width');
   const colorSelector = document.querySelector('.color__selector');
-  const framesWrapper = document.querySelector('.frames__template-wrapper');
-  const saveImg = document.querySelector('.save__img');
   const saveAnimation = document.querySelector('.save__animation');
   const previewMonitor = document.querySelector('.preview__monitor');
+  const framesWrapper = document.querySelector('.frames__template-wrapper');
 
   const state = {
     color: '',
@@ -106,15 +106,32 @@ const controller = () => {
     pen(canvas, ctx, state.color, state.lineWidth);
   };
 
+  const params = {
+    ctx,
+    play,
+    frames,
+    canvas,
+    fpsInput,
+    framesTwo,
+    addFrameBtn,
+    framesWrapper,
+    previewMonitor,
+    speed: state.speed,
+    width: canvas.width,
+    height: canvas.height,
+  };
+
   tools.addEventListener('click', toolIdentifier);
   colorSelector.addEventListener('input', setColorHandler);
   changeSizeInput.addEventListener('input', setLineWidthHandler);
+
   saveImg.addEventListener('click', () => saveImgHandler(params));
-  addFrameBtn.addEventListener('click', () => framesWorker(canvas, ctx, frames, framesTwo));
-  fpsInput.addEventListener('input', (e) => { state.speed = setFpsHandler(e, state.speed) });
-  saveAnimation.addEventListener('click', () => saveAnimationHandler(frames, canvas.width, canvas.height, state.speed));
-  stop.addEventListener('click', () => { myAnimation = stopHandler(myAnimation, play, fpsInput, framesWrapper, addFrameBtn) });
-  play.addEventListener('click', () => { myAnimation = playHandler(frames, framesTwo, state.speed, myAnimation, play, fpsInput, previewMonitor, framesWrapper, addFrameBtn) });
+  addFrameBtn.addEventListener('click', () => framesWorker(params));
+  saveAnimation.addEventListener('click', () => saveAnimationHandler(params));
+
+  play.addEventListener('click', () => { myAnimation = playHandler(params, myAnimation) });
+  stop.addEventListener('click', () => { myAnimation = stopHandler(params, myAnimation) });
+  fpsInput.addEventListener('input', (e) => { state.speed = setFpsHandler(e, params); params.speed = setFpsHandler(e, params) });
 };
 
 document.addEventListener('DOMContentLoaded', controller);

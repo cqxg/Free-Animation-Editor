@@ -1,5 +1,6 @@
-const framesWorker = (canvas, ctx, frames, framesTwo) => {
-  const { width, height } = canvas;
+const framesWorker = (params) => {
+  const { canvas, ctx, frames, framesTwo, width, height } = params;
+
   let dataURL = canvas.toDataURL();
   let imageData = ctx.getImageData(0, 0, width, height);
 

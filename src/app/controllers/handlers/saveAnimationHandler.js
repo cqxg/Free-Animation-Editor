@@ -1,6 +1,8 @@
 import GIF from '../../gif/dist/gif';
 
-const saveAnimationHandler = (frames, width, height, speed) => {
+const saveAnimationHandler = (params) => {
+    const { frames, width, height, speed } = params;
+
     let framesAnim = [];
 
     frames.map(item => framesAnim.push(item.dataURL));
@@ -24,7 +26,7 @@ const saveAnimationHandler = (frames, width, height, speed) => {
     gif.render();
     gif.on('finished', (blob) => {
         const element = document.createElement('a');
-        
+
         element.setAttribute('href', URL.createObjectURL(blob));
         element.setAttribute('download', 'filename');
         element.click();

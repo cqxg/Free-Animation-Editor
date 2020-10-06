@@ -1,4 +1,5 @@
-const playHandler = (frames, framesTwo, speed, myAnimation, play, fpsInput, previewMonitor, framesWrapper, addFrameBtn) => {
+const playHandler = (params, myAnimation) => {
+    let { frames, framesTwo, speed, play, fpsInput, previewMonitor, framesWrapper, addFrameBtn } = params;
 
     let i = 0;
 

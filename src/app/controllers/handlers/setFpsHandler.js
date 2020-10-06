@@ -1,4 +1,6 @@
-const setFpsHandler = (e, speed) => {
+const setFpsHandler = (e, params) => {
+    let { speed } = params;
+
     speed = 600 / e.target.value;
     return speed;
 };
