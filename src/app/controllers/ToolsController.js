@@ -5,6 +5,8 @@ import saveImgHandler from './handlers/saveImgHandler';
 import saveAnimationHandler from './handlers/saveAnimationHandler';
 
 import pen from './tools/Pen';
+import eraser from './tools/eraser';
+
 import framesWorker from './tools/FramesWorker';
 
 const controller = () => {
@@ -75,8 +77,9 @@ const controller = () => {
       case 'bucket':
         console.log('u want bucket');
         break;
-      case 'eraser':
-        console.log('u erase');
+      case 'eraser active':
+        state.currTool = 'eraser';
+        eraser();
         break;
       case 'circle':
         console.log('u want circle');
