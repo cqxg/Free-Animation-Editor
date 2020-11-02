@@ -26,6 +26,7 @@ const controller = () => {
   const saveAnimation = document.querySelector('.save__animation');
   const previewMonitor = document.querySelector('.preview__monitor');
   const framesWrapper = document.querySelector('.frames__template-wrapper');
+  const fullScreenBtn = document.querySelector('.full');
 
   const state = {
     color: '',
@@ -109,6 +110,10 @@ const controller = () => {
     pen(canvas, ctx, state.color, state.lineWidth);
   };
 
+  const fullScreen = () => {
+    console.log('qq')
+  }
+
   const params = {
     ctx,
     play,
@@ -125,6 +130,7 @@ const controller = () => {
   };
 
   tools.addEventListener('click', toolIdentifier);
+  fullScreenBtn.addEventListener('click', fullScreen);
   colorSelector.addEventListener('input', setColorHandler);
   changeSizeInput.addEventListener('input', setLineWidthHandler);
 
