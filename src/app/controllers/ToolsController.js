@@ -43,15 +43,21 @@ const controller = () => {
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
   play.disabled = true;
+  stop.disabled = true;
   play.classList.add('disable');
+  stop.classList.add('disable');
 
   const observer = new MutationObserver(() => {
     if (framesTwo.length > 1) {
       play.disabled = false;
+      stop.disabled = false;
       play.classList.remove('disable');
+      stop.classList.remove('disable');
     } else {
       play.disabled = true;
+      stop.disabled = true;
       play.classList.add('disable');
+      stop.classList.add('disable');
     }
   });
 
@@ -110,8 +116,6 @@ const controller = () => {
     pen(canvas, ctx, state.color, state.lineWidth);
   };
 
-  const fullScreen = () => previewMonitor.requestFullscreen();
-
   const params = {
     ctx,
     play,
@@ -128,9 +132,9 @@ const controller = () => {
   };
 
   tools.addEventListener('click', toolIdentifier);
-  fullScreenBtn.addEventListener('click', fullScreen);
   colorSelector.addEventListener('input', setColorHandler);
   changeSizeInput.addEventListener('input', setLineWidthHandler);
+  fullScreenBtn.addEventListener('click', () => previewMonitor.requestFullscreen());
 
   saveImg.addEventListener('click', () => saveImgHandler(params));
   addFrameBtn.addEventListener('click', () => framesWorker(params));
