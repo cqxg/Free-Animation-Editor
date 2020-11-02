@@ -110,16 +110,7 @@ const controller = () => {
     pen(canvas, ctx, state.color, state.lineWidth);
   };
 
-  const fullScreen = () => {
-    if (!document.fullscreenElement) {
-      previewMonitor.requestFullscreen()
-        .catch((err) => {
-          alert(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
-        });
-    } else {
-      document.exitFullscreen();
-    };
-  };
+  const fullScreen = () => previewMonitor.requestFullscreen();
 
   const params = {
     ctx,
