@@ -111,8 +111,15 @@ const controller = () => {
   };
 
   const fullScreen = () => {
-    console.log('qq')
-  }
+    if (!document.fullscreenElement) {
+      previewMonitor.requestFullscreen()
+        .catch((err) => {
+          alert(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+        });
+    } else {
+      document.exitFullscreen();
+    };
+  };
 
   const params = {
     ctx,
