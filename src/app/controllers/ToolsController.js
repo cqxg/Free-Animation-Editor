@@ -5,7 +5,7 @@ import saveImgHandler from './handlers/saveImgHandler';
 import saveAnimationHandler from './handlers/saveAnimationHandler';
 
 import pen from './tools/Pen';
-import eraser from './tools/eraser';
+// import eraser from './tools/eraser';
 
 import framesWorker from './tools/FramesWorker';
 
@@ -32,6 +32,7 @@ const controller = () => {
     color: '',
     speed: '200',
     lineWidth: '10',
+    currentTool: () => { }
   };
 
   const ctx = canvas.getContext('2d');
@@ -60,6 +61,14 @@ const controller = () => {
     }
   });
 
+  const observer = new MutationObserver(() => {
+
+  });
+
+  const observer = new MutationObserver(() => {
+
+  });
+
   observer.observe(framesWrapper, { childList: true });
 
   for (let i = 0; i < 8; i++) {
@@ -74,7 +83,7 @@ const controller = () => {
   const toolIdentifier = (e) => {
     switch (e.target.className) {
       case 'pen active':
-        console.log('pen')
+        state.currentTool = pen(canvas, ctx, state.color, state.lineWidth);
         pen(canvas, ctx, state.color, state.lineWidth);
         break;
       case 'line':
@@ -84,8 +93,8 @@ const controller = () => {
         console.log('u want bucket');
         break;
       case 'eraser active':
-        console.log(state.currTool);
-        eraser(canvas, ctx, state.lineWidth);
+        state.currentTool = pen(canvas, ctx, state.color = 'rgb(255,255,255)', state.lineWidth);
+        pen(canvas, ctx, state.color = 'rgb(255,255,255)', state.lineWidth);
         break;
       case 'circle':
         console.log('u want circle');
@@ -105,15 +114,15 @@ const controller = () => {
     }
   };
 
-  const setColorHandler = () => {
-    state.color = colorSelector.value;
-    pen(canvas, ctx, state.color, state.lineWidth);
-  };
+  // const setColorHandler = () => {
+  //   state.color = colorSelector.value;
+  //   pen(canvas, ctx, state.color, state.lineWidth);
+  // };
 
-  const setLineWidthHandler = (e) => {
-    state.lineWidth = e.target.value;
-    pen(canvas, ctx, state.color, state.lineWidth);
-  };
+  // const setLineWidthHandler = (e) => {
+  //   state.lineWidth = e.target.value;
+  //   pen(canvas, ctx, state.color, state.lineWidth);
+  // };
 
   const params = {
     ctx,
