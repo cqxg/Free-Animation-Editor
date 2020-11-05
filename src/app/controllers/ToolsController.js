@@ -5,6 +5,7 @@ import saveImgHandler from './handlers/saveImgHandler';
 import saveAnimationHandler from './handlers/saveAnimationHandler';
 
 import pen from './tools/Pen';
+import line from './tools/Line';
 import eraser from './tools/Eraser';
 
 import framesWorker from './tools/FramesWorker';
@@ -79,6 +80,8 @@ const controller = () => {
         pen(canvas, ctx, state.color, state.lineWidth);
         break;
       case 'line':
+        state.currentTool = () => line();
+        line();
         break;
       case 'bucket':
         break;
@@ -87,19 +90,14 @@ const controller = () => {
         eraser(canvas, ctx, state.lineWidth);
         break;
       case 'circle':
-        console.log('u want circle');
         break;
       case 'rect':
-        console.log('u want rect');
         break;
       case 'dropper':
-        console.log('u want dropper');
         break;
       case 'mover':
-        console.log('u want mover');
         break;
       default:
-        console.log('never choose');
         break;
     }
   };
