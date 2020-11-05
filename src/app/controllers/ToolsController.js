@@ -5,7 +5,7 @@ import saveImgHandler from './handlers/saveImgHandler';
 import saveAnimationHandler from './handlers/saveAnimationHandler';
 
 import pen from './tools/Pen';
-import eraser from './tools/eraser';
+import eraser from './tools/Eraser';
 
 import framesWorker from './tools/FramesWorker';
 
