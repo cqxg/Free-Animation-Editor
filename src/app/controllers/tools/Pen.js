@@ -5,6 +5,7 @@ const pen = (canvas, ctx, color, lineWidth) => {
   ctx.lineJoin = 'round';
   ctx.strokeStyle = color;
   ctx.lineWidth = lineWidth;
+  ctx.globalCompositeOperation = 'source-over';
 
   const draw = (e) => {
     if (!painting) return;

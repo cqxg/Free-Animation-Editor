@@ -31,7 +31,6 @@ const controller = () => {
   const state = {
     color: '',
     speed: '200',
-    currTool: 'pen',
     lineWidth: '10',
   };
 
@@ -39,7 +38,7 @@ const controller = () => {
   canvas.height = canvas.clientHeight;
   canvas.width = canvas.clientWidth;
 
-  ctx.fillStyle = 'white';
+  ctx.fillStyle = 'rgb(255,255,255)';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
   play.disabled = true;
@@ -75,7 +74,7 @@ const controller = () => {
   const toolIdentifier = (e) => {
     switch (e.target.className) {
       case 'pen active':
-        state.currTool = 'pen';
+        console.log('pen')
         pen(canvas, ctx, state.color, state.lineWidth);
         break;
       case 'line':
@@ -85,8 +84,8 @@ const controller = () => {
         console.log('u want bucket');
         break;
       case 'eraser active':
-        state.currTool = 'eraser';
-        eraser();
+        console.log(state.currTool);
+        eraser(canvas, ctx, state.lineWidth);
         break;
       case 'circle':
         console.log('u want circle');
