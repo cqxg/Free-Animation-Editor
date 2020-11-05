@@ -10,8 +10,6 @@ const framesWorker = (params) => {
   const frameTemplate = document.querySelector('.frame__template');
   const framesWrapper = document.querySelector('.frames__template-wrapper');
 
-  let prevId;
-
   frames.push({ dataURL, id });
   framesTwo.push({ imageData, id });
 
@@ -56,7 +54,6 @@ const framesWorker = (params) => {
   const goToFrame = (e) => {
     if (e.target.classList.contains('frame__btn-copy') || e.target.classList.contains('frame__btn-delete')) return null;
     const currItem = framesTwo.filter((item) => item.id === e.target.parentElement.id);
-    prevId = currItem[0].id;
 
     return ctx.putImageData(currItem[0].imageData, 0, 0);
   };
