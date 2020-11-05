@@ -79,9 +79,9 @@ const controller = () => {
         state.currentTool = () => pen(canvas, ctx, state.color, state.lineWidth);
         pen(canvas, ctx, state.color, state.lineWidth);
         break;
-      case 'line':
-        state.currentTool = () => line();
-        line();
+      case 'line active':
+        state.currentTool = () => line(canvas, ctx, state.color, state.lineWidth);
+        line(canvas, ctx, state.color, state.lineWidth);
         break;
       case 'bucket':
         break;

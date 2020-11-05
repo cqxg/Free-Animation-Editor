@@ -1,6 +1,16 @@
 const line = (canvas, ctx, color, lineWidth) => {
-    console.log('line')
+  const startPosition = (e) => {
+    const xCanvas = e.clientX - canvas.offsetLeft;
+    const yCanvas = e.clientY - canvas.offsetTop;
+
+    ctx.strokeStyle = color;
+    ctx.lineWidth = lineWidth;
+
+    ctx.lineTo(xCanvas, yCanvas);
+    ctx.stroke();
   };
-  
-  export default line;
-  
+
+  canvas.addEventListener('mousedown', startPosition);
+};
+
+export default line;
