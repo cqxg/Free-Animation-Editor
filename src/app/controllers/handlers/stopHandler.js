@@ -1,18 +1,20 @@
 const stopHandler = (params, myAnimation) => {
-    const { play, fpsInput, framesWrapper, addFrameBtn } = params;
+  const {
+    play, fpsInput, framesWrapper, addFrameBtn,
+  } = params;
 
-    clearInterval(myAnimation);
+  clearInterval(myAnimation);
 
-    play.disabled = false;
-    fpsInput.disabled = false;
-    addFrameBtn.disabled = false;
+  play.disabled = false;
+  fpsInput.disabled = false;
+  addFrameBtn.disabled = false;
 
-    play.classList.remove('disable');
-    fpsInput.classList.remove('disable');
-    addFrameBtn.classList.remove('disable');
-    framesWrapper.classList.remove('disable');
+  play.classList.remove('disable');
+  fpsInput.classList.remove('disable');
+  addFrameBtn.classList.remove('disable');
+  framesWrapper.classList.remove('disable');
 
-    return myAnimation;
+  return myAnimation;
 };
 
 export default stopHandler;

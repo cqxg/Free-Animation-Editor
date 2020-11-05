@@ -1,8 +1,10 @@
 const framesWorker = (params) => {
-  const { canvas, ctx, frames, framesTwo, width, height } = params;
+  const {
+    canvas, ctx, frames, framesTwo, width, height,
+  } = params;
 
-  let dataURL = canvas.toDataURL();
-  let imageData = ctx.getImageData(0, 0, width, height);
+  const dataURL = canvas.toDataURL();
+  const imageData = ctx.getImageData(0, 0, width, height);
 
   const id = frames.length + Math.random().toString(16).slice(2);
   const frameTemplate = document.querySelector('.frame__template');
