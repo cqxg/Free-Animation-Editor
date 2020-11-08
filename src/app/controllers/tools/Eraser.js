@@ -4,30 +4,21 @@ const eraser = (canvas, ctx, lineWidth) => {
   ctx.lineCap = 'round';
   ctx.lineJoin = 'round';
   ctx.lineWidth = lineWidth;
-  ctx.strokeStyle = 'rgb(255,255,255)';
 
-  const draw = (e) => {
-    if (!painting) return;
-
-    ctx.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
-    ctx.stroke();
-    ctx.beginPath();
-    ctx.moveTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
-  };
-
-  const startPosition = (e) => {
+  canvas.onmousedown = () => {
     painting = true;
-    draw(e);
-  };
+    canvas.onmousemove = (event) => {
+      if (!painting) return;
 
-  const finishedPosition = () => {
-    painting = false;
-    ctx.beginPath();
+      ctx.fillRect(event.offsetX - lineWidth, event.offsetY - lineWidth, lineWidth, lineWidth);
+      ctx.fillStyle = 'rgb(255,255,255)';
+      ctx.fill();
+    }
+    canvas.onmouseup = () => {
+      painting = false;
+      ctx.beginPath();
+    };
   };
-
-  canvas.addEventListener('mousemove', draw);
-  canvas.addEventListener('mousedown', startPosition);
-  canvas.addEventListener('mouseup', finishedPosition);
 };
 
 export default eraser;
