@@ -7,6 +7,7 @@ import saveAnimationHandler from './handlers/saveAnimationHandler';
 import pen from './tools/Pen';
 import line from './tools/Line';
 import eraser from './tools/Eraser';
+import circle from './tools/Circle';
 
 import framesWorker from './tools/FramesWorker';
 
@@ -76,6 +77,7 @@ const controller = () => {
   const toolIdentifier = (e) => {
     switch (e.target.className) {
       case 'pen active':
+        console.log('qq')
         state.currentTool = () => pen(canvas, ctx, state.color, state.lineWidth);
         pen(canvas, ctx, state.color, state.lineWidth);
         break;
@@ -90,6 +92,8 @@ const controller = () => {
         eraser(canvas, ctx, state.lineWidth);
         break;
       case 'circle':
+        state.currentTool = () => circle(canvas, ctx, state.color, state.lineWidth);
+        circle(canvas, ctx, state.color, state.lineWidth);
         break;
       case 'rect':
         break;
