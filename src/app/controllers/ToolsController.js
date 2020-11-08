@@ -91,7 +91,7 @@ const controller = () => {
         state.currentTool = () => eraser(canvas, ctx, state.lineWidth);
         eraser(canvas, ctx, state.lineWidth);
         break;
-      case 'circle':
+      case 'circle active':
         state.currentTool = () => circle(canvas, ctx, state.color, state.lineWidth);
         circle(canvas, ctx, state.color, state.lineWidth);
         break;
