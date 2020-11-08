@@ -6,7 +6,7 @@ const pen = (canvas, ctx, color, lineWidth) => {
   ctx.strokeStyle = color;
   ctx.lineWidth = lineWidth;
 
-  canvas.onmousedown = (e) => {
+  canvas.onmousedown = () => {
     painting = true;
 
     canvas.onmousemove = (e) => {

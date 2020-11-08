@@ -13,7 +13,7 @@ const eraser = (canvas, ctx, lineWidth) => {
       ctx.fillRect(event.offsetX - lineWidth, event.offsetY - lineWidth, lineWidth, lineWidth);
       ctx.fillStyle = 'rgb(255,255,255)';
       ctx.fill();
-    }
+    };
     canvas.onmouseup = () => {
       painting = false;
       ctx.beginPath();

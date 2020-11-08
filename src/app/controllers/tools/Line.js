@@ -9,10 +9,10 @@ const line = (canvas, ctx, color, lineWidth) => {
   canvas.onmousedown = (e) => {
     painting = true;
 
-    canvas.onmousemove = (e) => {
+    canvas.onmousemove = (event) => {
       if (!painting) return;
-      
-      ctx.moveTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+
+      ctx.moveTo(event.clientX - canvas.offsetLeft, event.clientY - canvas.offsetTop);
     };
 
     canvas.onmouseup = () => {
