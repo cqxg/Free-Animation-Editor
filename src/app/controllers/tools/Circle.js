@@ -16,12 +16,13 @@ const circle = (canvas, ctx, color, lineWidth) => {
             ctx.arc(x, y, radius, 0, 2 * Math.PI);
             ctx.stroke();
             ctx.beginPath();
-        }
+        };
+
         canvas.onmouseup = () => {
             canvas.onmousemove = null;
             ctx.beginPath();
-        }
-    }
+        };
+    };
 };
 
 export default circle;
