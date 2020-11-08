@@ -4,13 +4,13 @@ const circle = (canvas, ctx, color, lineWidth) => {
     ctx.lineJoin = 'round';
     ctx.strokeStyle = color;
 
-    canvas.onmousedown = (event) => {
-        const x = event.offsetX;
-        const y = event.offsetY;
+    canvas.onmousedown = (e) => {
+        const x = e.offsetX;
+        const y = e.offsetY;
 
-        canvas.onmousemove = (event) => {
-            const a = event.offsetX;
-            const b = event.offsetY;
+        canvas.onmousemove = (e) => {
+            const a = e.offsetX;
+            const b = e.offsetY;
             const radius = Math.pow(Math.pow(a - x, 2) + Math.pow(b - y, 2), 0.5);
 
             ctx.arc(x, y, radius, 0, 2 * Math.PI);
@@ -19,6 +19,7 @@ const circle = (canvas, ctx, color, lineWidth) => {
         }
         canvas.onmouseup = () => {
             canvas.onmousemove = null;
+            ctx.beginPath();
         }
     }
 };

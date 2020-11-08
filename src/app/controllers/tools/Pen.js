@@ -6,28 +6,23 @@ const pen = (canvas, ctx, color, lineWidth) => {
   ctx.strokeStyle = color;
   ctx.lineWidth = lineWidth;
 
-  const draw = (e) => {
-    if (!painting) return;
-
-    ctx.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
-    ctx.stroke();
-    ctx.beginPath();
-    ctx.moveTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
-  };
-
-  const startPosition = (e) => {
+  canvas.onmousedown = (e) => {
     painting = true;
-    draw(e);
-  };
 
-  const finishedPosition = () => {
-    painting = false;
-    ctx.beginPath();
-  };
+    canvas.onmousemove = (e) => {
+      if (!painting) return;
 
-  canvas.addEventListener('mousemove', draw);
-  canvas.addEventListener('mousedown', startPosition);
-  canvas.addEventListener('mouseup', finishedPosition);
+      ctx.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+    };
+
+    canvas.onmouseup = () => {
+      painting = false;
+      ctx.beginPath();
+    };
+  };
 };
 
 export default pen;
