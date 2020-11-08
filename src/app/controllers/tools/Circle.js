@@ -1,14 +1,17 @@
 const circle = (canvas, ctx, color, lineWidth) => {
-
-    ctx.lineCap = 'round';
-    ctx.lineJoin = 'round';
+    let painting;
     ctx.strokeStyle = color;
+    ctx.lineWidth = lineWidth;
 
     canvas.onmousedown = (e) => {
+        painting = true;
+
         const x = e.offsetX;
         const y = e.offsetY;
 
         canvas.onmousemove = (e) => {
+            if (!painting) return;
+
             const a = e.offsetX;
             const b = e.offsetY;
             const radius = Math.pow(Math.pow(a - x, 2) + Math.pow(b - y, 2), 0.5);
@@ -19,7 +22,7 @@ const circle = (canvas, ctx, color, lineWidth) => {
         };
 
         canvas.onmouseup = () => {
-            canvas.onmousemove = null;
+            painting = false;
             ctx.beginPath();
         };
     };
