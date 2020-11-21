@@ -1,7 +1,7 @@
 const circle = (canvas, ctx, color, lineWidth) => {
   let painting;
   ctx.strokeStyle = color;
-  ctx.lineWidth = lineWidth;
+  ctx.lineWidth = lineWidth / 10;
 
   canvas.onmousedown = (e) => {
     painting = true;
@@ -14,7 +14,7 @@ const circle = (canvas, ctx, color, lineWidth) => {
 
       const a = event.offsetX;
       const b = event.offsetY;
-      const radius = (((a - x) ** 2) + ((b - y) ** 2)) ** 0.5;
+      const radius = ((a - x) ** 2 + (b - y) ** 2) ** 0.5;
 
       ctx.arc(x, y, radius, 0, 2 * Math.PI);
       ctx.stroke();
