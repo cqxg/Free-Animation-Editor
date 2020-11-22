@@ -1,27 +1,27 @@
 const rectangle = (canvas, ctx, color, lineWidth, width, height) => {
+  let painting;
+  ctx.strokeStyle = color;
+  ctx.lineWidth = lineWidth / 10;
 
   canvas.onmousedown = (e) => {
+    painting = true;
+
     const x = e.offsetX;
     const y = e.offsetY;
 
     canvas.onmousemove = (e) => {
+      if (!painting) return;
+
       const a = e.offsetX;
       const b = e.offsetY;
 
       ctx.rect(x, y, a - x, b - y);
-      ctx.lineWidth = lineWidth;
-      ctx.fillStyle = color;
-
-      ctx.strokeStyle = color;
-      ctx.fillStyle = color;
       ctx.stroke();
-
-      ctx.clearRect(0, 0, width, height);
-      ctx.drawImage(canvas, 0, 0);
+      ctx.beginPath();
     };
 
     canvas.onmouseup = () => {
-      canvas.onmousemove = null;
+      painting = false;
       ctx.closePath();
     };
   };

@@ -96,6 +96,7 @@ const controller = () => {
         circle(canvas, ctx, state.color, state.lineWidth);
         break;
       case 'rect active':
+        ctx.beginPath();
         state.currentTool = () => rectangle(canvas, ctx, state.color, state.lineWidth, canvas.height, canvas.width);
         rectangle(canvas, ctx, state.color, state.lineWidth, canvas.height, canvas.width);
         break;

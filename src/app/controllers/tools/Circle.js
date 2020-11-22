@@ -9,11 +9,11 @@ const circle = (canvas, ctx, color, lineWidth) => {
     const x = e.offsetX;
     const y = e.offsetY;
 
-    canvas.onmousemove = (event) => {
+    canvas.onmousemove = (e) => {
       if (!painting) return;
 
-      const a = event.offsetX;
-      const b = event.offsetY;
+      const a = e.offsetX;
+      const b = e.offsetY;
       const radius = ((a - x) ** 2 + (b - y) ** 2) ** 0.5;
 
       ctx.arc(x, y, radius, 0, 2 * Math.PI);
