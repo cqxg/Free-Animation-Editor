@@ -8,6 +8,7 @@ import pen from './tools/Pen';
 import line from './tools/Line';
 import eraser from './tools/Eraser';
 import circle from './tools/Circle';
+import rectangle from './tools/Rectangle';
 
 import framesWorker from './tools/FramesWorker';
 
@@ -77,28 +78,26 @@ const controller = () => {
   const toolIdentifier = (e) => {
     switch (e.target.className) {
       case 'pen active':
-        ctx.beginPath();
         state.currentTool = () => pen(canvas, ctx, state.color, state.lineWidth);
         pen(canvas, ctx, state.color, state.lineWidth);
         break;
       case 'line active':
-        ctx.beginPath();
         state.currentTool = () => line(canvas, ctx, state.color, state.lineWidth);
         line(canvas, ctx, state.color, state.lineWidth);
         break;
       case 'bucket':
         break;
       case 'eraser active':
-        ctx.beginPath();
         state.currentTool = () => eraser(canvas, ctx, state.lineWidth);
         eraser(canvas, ctx, state.lineWidth);
         break;
       case 'circle active':
-        ctx.beginPath();
         state.currentTool = () => circle(canvas, ctx, state.color, state.lineWidth);
         circle(canvas, ctx, state.color, state.lineWidth);
         break;
-      case 'rect':
+      case 'rect active':
+        state.currentTool = () => rectangle(canvas, ctx, state.color, state.lineWidth);
+        rectangle(canvas, ctx, state.color, state.lineWidth);
         break;
       case 'dropper':
         break;
