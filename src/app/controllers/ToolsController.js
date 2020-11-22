@@ -96,8 +96,8 @@ const controller = () => {
         circle(canvas, ctx, state.color, state.lineWidth);
         break;
       case 'rect active':
-        state.currentTool = () => rectangle(canvas, ctx, state.color, state.lineWidth);
-        rectangle(canvas, ctx, state.color, state.lineWidth);
+        state.currentTool = () => rectangle(canvas, ctx, state.color, state.lineWidth, canvas.height, canvas.width);
+        rectangle(canvas, ctx, state.color, state.lineWidth, canvas.height, canvas.width);
         break;
       case 'dropper':
         break;
