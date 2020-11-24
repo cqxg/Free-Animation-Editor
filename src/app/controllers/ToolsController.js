@@ -6,6 +6,7 @@ import saveAnimationHandler from './handlers/saveAnimationHandler';
 
 import pen from './tools/Pen';
 import line from './tools/Line';
+import mover from './tools/Mover';
 import eraser from './tools/Eraser';
 import circle from './tools/Circle';
 import rectangle from './tools/Rectangle';
@@ -96,13 +97,14 @@ const controller = () => {
         circle(canvas, ctx, state.color, state.lineWidth);
         break;
       case 'rect active':
-        ctx.beginPath();
         state.currentTool = () => rectangle(canvas, ctx, state.color, state.lineWidth, canvas.height, canvas.width);
         rectangle(canvas, ctx, state.color, state.lineWidth, canvas.height, canvas.width);
         break;
       case 'dropper':
         break;
-      case 'mover':
+      case 'mover active':
+        state.currentTool = () => mover(canvas, ctx, state.color, state.lineWidth, canvas.height, canvas.width);
+        mover(canvas, ctx, state.color, state.lineWidth, canvas.height, canvas.width);
         break;
       default:
         break;
