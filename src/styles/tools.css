@@ -1,72 +1,75 @@
 .phone__notify {
-	display: none;
+  display: none;
 }
 
 .tools {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
+  left: -100vw;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transition: all 1s ease-in-out;
 }
 
 .tools__btn-wrapper {
-	display: flex;
+  display: flex;
 }
 
 .active {
-	border-color: #ff4700!important;
+  border-color: #ff4700 !important;
 }
 
 .pen {
-	background: url('../styles/assets/tools/pen.png') no-repeat;
+  background: url("../styles/assets/tools/pen.png") no-repeat;
 }
 
 .line {
-	background: url('../styles/assets/tools/line.png') no-repeat;
+  background: url("../styles/assets/tools/line.png") no-repeat;
 }
 
 .eraser {
-	background: url('../styles/assets/tools/eraser.png') no-repeat;
+  background: url("../styles/assets/tools/eraser.png") no-repeat;
 }
 
 .bucket {
-	background: url('../styles/assets/tools/bucket.png') no-repeat;
+  background: url("../styles/assets/tools/bucket.png") no-repeat;
 }
 
 .dropper {
-	background: url('../styles/assets/tools/dropper.png') no-repeat;
+  background: url("../styles/assets/tools/dropper.png") no-repeat;
 }
 
 .circle {
-	background: url('../styles/assets/tools/circled.png') no-repeat;
+  background: url("../styles/assets/tools/circled.png") no-repeat;
 }
 
 .rect {
-	background: url('../styles/assets/tools/rectangle.png') no-repeat;
+  background: url("../styles/assets/tools/rectangle.png") no-repeat;
 }
 
 .mover {
-	background: url('../styles/assets/tools/move.png') no-repeat;
+  background: url("../styles/assets/tools/move.png") no-repeat;
 }
 
 .stop {
-	background: url('../styles/assets/tools/stop.png') no-repeat;
+  background: url("../styles/assets/tools/stop.png") no-repeat;
 }
 
 .play {
-	background: url('../styles/assets/tools/play.png') no-repeat;
+  background: url("../styles/assets/tools/play.png") no-repeat;
 }
 
 .full {
-	background: url('../styles/assets/tools/full_screen.png') no-repeat;
+  background: url("../styles/assets/tools/full_screen.png") no-repeat;
 }
 
 .frames__add {
-	outline: none;
-	width: 50%!important;
-	height: 40px!important;
-	background: url('../styles/assets/tools/add.png') no-repeat;
+  outline: none;
+  width: 50% !important;
+  height: 40px !important;
+  background: url("../styles/assets/tools/add.png") no-repeat;
 }
 
 .pen:hover,
@@ -82,7 +85,7 @@
 .dropper:hover,
 .frames__add:hover,
 .color__selector:hover {
-	box-shadow: 0px 0px 2px 1px #ff4700;
+  box-shadow: 0px 0px 2px 1px #ff4700;
 }
 
 .pen,
@@ -98,264 +101,270 @@
 .dropper,
 .frames__add,
 .color__selector {
-	width: 55px;
-	height: 55px;
-	outline: none;
-	cursor: pointer;
-	margin: 3px 3px;
-	border-radius: 5px;
-	background-position: center;
-	border: 2px solid rgb(0, 0, 0);
-	background-color: rgb(225, 225, 225);
+  width: 55px;
+  height: 55px;
+  outline: none;
+  cursor: pointer;
+  margin: 3px 3px;
+  border-radius: 5px;
+  background-position: center;
+  border: 2px solid rgb(0, 0, 0);
+  background-color: rgb(225, 225, 225);
 }
 
 .save__img,
 .save__animation {
-	width: 195px;
-	margin: 1px;
-	display: flex;
-	outline: none;
-	border-radius: 3px;
-	align-items: center;
-	justify-content: center;
-	color: rgb(255, 255, 255);
-	background-color: rgb(0, 0, 0);
-	border: 1px solid rgb(32, 32, 32);
+  width: 195px;
+  margin: 1px;
+  display: flex;
+  outline: none;
+  border-radius: 3px;
+  align-items: center;
+  justify-content: center;
+  color: rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
+  border: 1px solid rgb(32, 32, 32);
 }
 
 .save__img::before {
-	margin-right: 3px;
-	content: url('../styles/assets/tools/save3.png');
+  margin-right: 3px;
+  content: url("../styles/assets/tools/save3.png");
 }
 
 .save__animation::before {
-	margin-right: 3px;
-	content: url('../styles/assets/tools/save3.png');
+  margin-right: 3px;
+  content: url("../styles/assets/tools/save3.png");
 }
 
 .save__img:hover,
 .save__animation:hover {
-	box-shadow: 0px 0px 1px 1px #ff4700;
+  box-shadow: 0px 0px 1px 1px #ff4700;
 }
 
 .stop,
 .play,
 .full {
-	width: 49px;
-	height: 49px;
-	border: 2px solid rgb(0, 0, 0);
+  width: 49px;
+  height: 49px;
+  border: 2px solid rgb(0, 0, 0);
 }
 
 .frames {
-	width: 175px;
-	height: 600px;
-	display: flex;
-	border-radius: 5px;
-	flex-direction: column;
+  left: -100vw;
+  width: 175px;
+  height: 600px;
+  display: flex;
+  position: relative;
+  border-radius: 5px;
+  flex-direction: column;
+  transition: all 1s ease-in-out;
 }
 
 .frames__template-wrapper {
-	overflow-y: scroll;
+  overflow-y: scroll;
 }
 
 .canvas {
-	width: 750px;
-	height: 600px;
+  width: 750px;
+  height: 600px;
 }
 
 .canvas__field {
-	width: 100%;
-	height: 100%;
-	border-radius: 5px;
-	border: 2px solid rgb(0, 0, 0);
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  border: 2px solid rgb(0, 0, 0);
 }
 
 .preview {
-	display: flex;
-	align-items: center;
-	flex-direction: column;
-	justify-content: flex-end;
+  right: -100vh;
+  display: flex;
+  position: relative;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition: all 1s ease-in-out;
 }
 
 .preview__monitor {
-    width: 375px;
-	height: 300px;
-	border-radius: 5px 5px 0px 0px;
-	background-size: 100%;
-	background-repeat: no-repeat;
-	border: 2px solid rgb(0, 0, 0);
+  width: 375px;
+  height: 300px;
+  border-radius: 5px 5px 0px 0px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  border: 2px solid rgb(0, 0, 0);
 }
 
 .play__block {
-	width: 375px;
-	align-content: center;
-    background-color: rgb(150, 150, 150);
-	border-right: 2px solid rgb(0, 0, 0);
-	border-bottom: 2px solid rgb(0, 0, 0);
-	border-left: 2px solid rgb(0, 0, 0);
+  width: 375px;
+  align-content: center;
+  background-color: rgb(150, 150, 150);
+  border-right: 2px solid rgb(0, 0, 0);
+  border-bottom: 2px solid rgb(0, 0, 0);
+  border-left: 2px solid rgb(0, 0, 0);
 }
 
 .save__wrapper {
-	position: absolute;
-    display: inline-grid;
-    padding: 4px 0 0 2px;
+  position: absolute;
+  display: inline-grid;
+  padding: 4px 0 0 2px;
 }
 
 .fps__controller {
-	color: white;
-	text-align: center;
+  color: white;
+  text-align: center;
 }
 
 .frame {
-    width: 100px;
-    height: 100px;
-    margin: 5px auto;
-	border-radius: 5px;
-	position: relative;
-    border: 2px solid rgb(0, 0, 0);
+  width: 100px;
+  height: 100px;
+  margin: 5px auto;
+  border-radius: 5px;
+  position: relative;
+  border: 2px solid rgb(0, 0, 0);
 }
 
 .frame__image {
-    width: 100%;
-    height: 100% ;
-    background-color: white;
+  width: 100%;
+  height: 100%;
+  background-color: white;
 }
 
 .frame__btn-delete {
-	top: 0;
-	right: 0;
-	width: 28px;
-	height: 28px;
-	border: none;
-	outline: none;
-	cursor: pointer;
-	position: absolute;
-	background: url('../styles/assets/tools/trash.png') no-repeat;
+  top: 0;
+  right: 0;
+  width: 28px;
+  height: 28px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  position: absolute;
+  background: url("../styles/assets/tools/trash.png") no-repeat;
 }
 
 .frame__btn-copy {
-	right: 0;
-	bottom: 0;
-	margin-right: 5px;
-	width: 28px;
-	height: 28px;
-	border: none;
-	outline: none;
-	cursor: pointer;
-	position: absolute;
-	background: url('../styles/assets/tools/copy.png') no-repeat;
+  right: 0;
+  bottom: 0;
+  margin-right: 5px;
+  width: 28px;
+  height: 28px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  position: absolute;
+  background: url("../styles/assets/tools/copy.png") no-repeat;
 }
 
 .frames__btn-wrapper {
-	display: flex;
-	justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
-.line__width, 
+.line__width,
 .animation__speed {
-	margin: 5px;
+  margin: 5px;
 }
 
 @media screen and (max-width: 1465px) {
-	.canvas {
-		width: 600px;
-		height: 480px;
-	}
-	.play__block,
-	.preview__monitor {
-		width: 300px;
-	}
-	.preview__monitor {
-		height: 240px;
-	}
-	.save__img,
-	.save__animation {
-		width: auto;
-		padding-right: 3px;
-	}
+  .canvas {
+    width: 600px;
+    height: 480px;
+  }
+  .play__block,
+  .preview__monitor {
+    width: 300px;
+  }
+  .preview__monitor {
+    height: 240px;
+  }
+  .save__img,
+  .save__animation {
+    width: auto;
+    padding-right: 3px;
+  }
 }
 
 @media screen and (max-width: 1265px) {
-	.pen,
-	.line,
-	.rect,
-	.mover,
-	.circle,
-	.eraser,
-	.bucket,
-	.dropper,
-	.color__selector {
-		width: 50px;
-		height: 50px;
-	}
-	.preview {
-		margin-right: 7px;
-	}
-	.canvas {
-		width: 500px;
-		height: 400px;
-	}
+  .pen,
+  .line,
+  .rect,
+  .mover,
+  .circle,
+  .eraser,
+  .bucket,
+  .dropper,
+  .color__selector {
+    width: 50px;
+    height: 50px;
+  }
+  .preview {
+    margin-right: 7px;
+  }
+  .canvas {
+    width: 500px;
+    height: 400px;
+  }
 }
 
 @media screen and (max-width: 1129px) {
-	.canvas {
-		width: 400px;
-		height: 320px;
-	}
-	.frames {
-		width: 120px;
-	}
+  .canvas {
+    width: 400px;
+    height: 320px;
+  }
+  .frames {
+    width: 120px;
+  }
 }
 
 @media screen and (max-width: 979px) {
-	.pen,
-	.line,
-	.rect,
-	.mover,
-	.stop,
-	.play,
-	.full,
-	.circle,
-	.eraser,
-	.bucket,
-	.dropper,
-	.color__selector {
-		width: 35px;
-		height: 35px;
-	}
-	.canvas {
-		width: 300px;
-		height: 240px;
-	}
-	.frames {
-		width: 90px;
-	}
-	.preview__monitor {
-		width: 150px;
-		height: 120px;
-	}
-	.play__block {
-		width: 150px;
-		flex-wrap: wrap;
-	}
-	.save__wrapper {
-		position: relative;
-	}
+  .pen,
+  .line,
+  .rect,
+  .mover,
+  .stop,
+  .play,
+  .full,
+  .circle,
+  .eraser,
+  .bucket,
+  .dropper,
+  .color__selector {
+    width: 35px;
+    height: 35px;
+  }
+  .canvas {
+    width: 300px;
+    height: 240px;
+  }
+  .frames {
+    width: 90px;
+  }
+  .preview__monitor {
+    width: 150px;
+    height: 120px;
+  }
+  .play__block {
+    width: 150px;
+    flex-wrap: wrap;
+  }
+  .save__wrapper {
+    position: relative;
+  }
 }
 
 @media screen and (max-width: 674px) {
-	.canvas {
-		width: 150px;
-		height: 120px;
-	}
+  .canvas {
+    width: 150px;
+    height: 120px;
+  }
 }
 
 @media screen and (max-width: 520px) {
-	.phone__notify {
-		display: block;
-		margin: 0 auto;
-	}
-	main {
-		display: none;
-	}
+  .phone__notify {
+    display: block;
+    margin: 0 auto;
+  }
+  main {
+    display: none;
+  }
 }

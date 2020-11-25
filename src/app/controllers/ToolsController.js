@@ -20,6 +20,8 @@ const controller = () => {
   const play = document.querySelector('.play');
   const stop = document.querySelector('.stop');
   const tools = document.querySelector('.tools');
+  const preview = document.querySelector('.preview');
+  const allFrames = document.querySelector('.frames');
   const saveImg = document.querySelector('.save__img');
   const fullScreenBtn = document.querySelector('.full');
   const canvas = document.querySelector('.canvas__field');
@@ -38,6 +40,12 @@ const controller = () => {
     lineWidth: '10',
     currentTool: () => { },
   };
+
+  setTimeout(() => {
+    tools.style.left = '0';
+    preview.style.right = '0';
+    allFrames.style.left = '0';
+  }, 0.1)
 
   const ctx = canvas.getContext('2d');
   canvas.height = canvas.clientHeight;
