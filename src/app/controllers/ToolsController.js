@@ -43,9 +43,10 @@ const controller = () => {
 
   setTimeout(() => {
     tools.style.left = '0';
+    tools.style.opacity = '1';
     preview.style.right = '0';
     allFrames.style.left = '0';
-  }, 0.1)
+  }, 0.01)
 
   const ctx = canvas.getContext('2d');
   canvas.height = canvas.clientHeight;

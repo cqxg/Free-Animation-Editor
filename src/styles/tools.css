@@ -3,6 +3,7 @@
 }
 
 .tools {
+  opacity: 0;
   left: -100vw;
   display: flex;
   flex-wrap: wrap;
@@ -10,7 +11,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  transition: all 1s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 
 .tools__btn-wrapper {
@@ -157,7 +158,7 @@
   position: relative;
   border-radius: 5px;
   flex-direction: column;
-  transition: all 1s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .frames__template-wrapper {
@@ -183,15 +184,15 @@
   align-items: center;
   flex-direction: column;
   justify-content: flex-end;
-  transition: all 1s ease-in-out;
+  transition: all 0.7s ease-in-out;
 }
 
 .preview__monitor {
   width: 375px;
   height: 300px;
-  border-radius: 5px 5px 0px 0px;
   background-size: 100%;
   background-repeat: no-repeat;
+  border-radius: 5px 5px 0px 0px;
   border: 2px solid rgb(0, 0, 0);
 }
 
@@ -245,12 +246,12 @@
 .frame__btn-copy {
   right: 0;
   bottom: 0;
-  margin-right: 5px;
   width: 28px;
   height: 28px;
   border: none;
   outline: none;
   cursor: pointer;
+  margin-right: 5px;
   position: absolute;
   background: url("../styles/assets/tools/copy.png") no-repeat;
 }
