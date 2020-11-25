@@ -211,7 +211,6 @@
 }
 
 .fps__controller {
-  color: white;
   text-align: center;
 }
 
@@ -262,7 +261,7 @@
 
 .line__width,
 .animation__speed {
-  margin: 5px;
+  margin: 15px 0 15px 0;
 }
 
 @media screen and (max-width: 1465px) {
