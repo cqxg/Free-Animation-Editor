@@ -90,6 +90,8 @@ const controller = () => {
       case 'pen active':
         state.currentTool = () => pen(canvas, ctx, state.color, state.lineWidth);
         pen(canvas, ctx, state.color, state.lineWidth);
+        console.log(frames);
+        console.log(framesTwo);
         break;
       case 'line active':
         state.currentTool = () => line(canvas, ctx, state.color, state.lineWidth);
