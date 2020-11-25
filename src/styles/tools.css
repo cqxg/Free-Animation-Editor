@@ -11,7 +11,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
 
 .tools__btn-wrapper {
@@ -116,15 +116,15 @@
 .save__img,
 .save__animation {
   width: 195px;
-  margin: 1px;
   display: flex;
   outline: none;
-  border-radius: 3px;
+  border-radius: 2px;
+  margin-bottom: 3px;
   align-items: center;
   justify-content: center;
   color: rgb(255, 255, 255);
   background-color: rgb(0, 0, 0);
-  border: 1px solid rgb(32, 32, 32);
+  border: 1px solid rgb(250, 250, 250, 0.3);
 }
 
 .save__img::before {
@@ -158,7 +158,7 @@
   position: relative;
   border-radius: 5px;
   flex-direction: column;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .frames__template-wrapper {
@@ -184,7 +184,7 @@
   align-items: center;
   flex-direction: column;
   justify-content: flex-end;
-  transition: all 0.7s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 
 .preview__monitor {
@@ -194,15 +194,13 @@
   background-repeat: no-repeat;
   border-radius: 5px 5px 0px 0px;
   border: 2px solid rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
 }
 
 .play__block {
   width: 375px;
   align-content: center;
-  background-color: rgb(150, 150, 150);
-  border-right: 2px solid rgb(0, 0, 0);
-  border-bottom: 2px solid rgb(0, 0, 0);
-  border-left: 2px solid rgb(0, 0, 0);
+  border: 1px solid rgb(200, 200, 200, 0.4);
 }
 
 .save__wrapper {
