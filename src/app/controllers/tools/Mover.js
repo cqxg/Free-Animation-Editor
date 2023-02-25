@@ -1,8 +1,8 @@
-const mover = (canvas, ctx, color, lineWidth, width, height) => {
+const mover = (canvas, ctx) => {
   const form = {
     img: null,
     posX: 0,
-    poxY: 0,
+    posY: 0,
   };
 
   let painting;
@@ -15,13 +15,12 @@ const mover = (canvas, ctx, color, lineWidth, width, height) => {
     form.img.src = dataURL;
     form.posX = e.pageX - canvas.offsetLeft;
     form.posY = e.pageY - canvas.offsetTop;
-
   };
 
   canvas.onmousemove = (e) => {
     if (!painting) return;
 
-    ctx.fillStyle = 'rgba(255,255,255,0)';
+    ctx.fillStyle = 'rgba(255,255,255)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     const dx = e.pageX - canvas.offsetLeft - form.posX;
     const dy = e.pageY - canvas.offsetTop - form.posY;
